@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#071f28">
-<meta name="description" content="A little Karp, a living reef, and a very big red sea serpent. A one-button ocean arcade adventure.">
-<title>CBK — Splashy Karp</title>
+<meta name="description" content="Swim the reef, collect a bubble shield, outlast CBK and evolve into Teacher’s Pet. Two ocean zones, one little fish.">
+<title>CBK — Splashy Karp · Teacher’s Pet</title>
 <style>
 :root{color-scheme:dark;--paper:#f1efe1;--muted:#97b5b8;--mint:#b5edcf;--amber:#ffc385;--ink:#071f28;--line:rgba(181,219,207,.14)}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#071f28}body{color:var(--paper);font-family:"Avenir Next","Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased;background:radial-gradient(ellipse at 50% 0,rgba(47,87,83,.3),transparent 65%),#071f28}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit;cursor:pointer}button:disabled{cursor:default}button:focus-visible,a:focus-visible,.stage:focus-visible{outline:2px solid var(--amber);outline-offset:5px}button{touch-action:manipulation}button svg{pointer-events:none}[hidden]{display:none!important}.app{width:min(1320px,100%);padding:0 40px;margin:0 auto}.masthead{height:102px;display:flex;align-items:center;justify-content:space-between;gap:20px}.wordmark{display:flex;align-items:center;gap:12px;color:var(--paper);text-decoration:none;font-size:21px;font-weight:500;letter-spacing:-.7px;line-height:1.2}.wordmark b{font-weight:800}.wordmark small{display:block;font-size:8px;letter-spacing:2.6px;color:var(--muted);font-weight:650;margin-top:6px}.brand-mark{width:42px;height:42px}.header-right{display:flex;align-items:center;gap:28px}.edition{font-size:9px;font-weight:650;letter-spacing:1.6px;color:var(--muted);display:flex;gap:10px;align-items:center}.edition i,.eyebrow i,.home-bottom i{width:5px;height:5px;border-radius:50%;background:var(--mint);display:inline-block}.icon-button{display:grid;place-items:center;background:transparent;border:1px solid rgba(186,222,215,.22);border-radius:50%;width:44px;height:44px;color:var(--paper);transition:background .2s}.icon-button:hover{background:rgba(195,231,219,.12)}.icon-button svg{height:20px;width:20px}.stage{height:610px;position:relative;overflow:hidden;border:1px solid rgba(159,220,197,.26);border-radius:20px;background:#0b434d;isolation:isolate;touch-action:none;box-shadow:0 24px 60px -28px rgba(0,0,0,.5)}canvas{width:100%;height:100%;display:block;position:absolute;inset:0}.stage-vignette{position:absolute;inset:0;pointer-events:none;border-radius:inherit;box-shadow:inset 0 0 65px rgba(2,24,29,.17)}.screen{position:absolute;inset:0;z-index:5}.home-screen{background:linear-gradient(90deg,rgba(3,38,43,.9) 0%,rgba(3,38,43,.72) 31%,rgba(3,38,43,0) 66%)}.home-copy{position:absolute;left:5.5%;top:14%;max-width:51%}.eyebrow{font-size:9px;font-weight:750;letter-spacing:1.9px;color:var(--mint);display:flex;gap:10px;align-items:center;line-height:1.5}h1{font-family:"Arial Rounded MT Bold","Trebuchet MS","Segoe UI",sans-serif;font-size:clamp(52px,5.6vw,78px);font-weight:800;line-height:1.04;letter-spacing:-4.3px;margin:22px 0 21px;color:#f5f2df}h1 em{font-style:normal;color:var(--mint)}.home-copy>p{font-size:14px;color:#b7cfcb;line-height:1.9;margin:0 0 26px}.home-actions{display:flex;gap:12px;align-items:center}.primary,.secondary{display:flex;align-items:center;justify-content:center;gap:25px;min-height:48px;border-radius:7px;padding:14px 21px;font-size:12px;font-weight:750;letter-spacing:.1px;transition:background .2s,transform .2s;border:1px solid transparent}.primary{background:var(--amber);color:#323323;box-shadow:0 4px 0 rgba(9,30,32,.12)}.primary:hover{background:#ffd3a5;transform:translateY(-1px)}.primary:active{transform:translateY(1px)}.primary span,.secondary span{font-size:19px;font-weight:500;line-height:12px}.secondary{color:var(--paper);background:rgba(4,38,43,.2);border-color:rgba(177,221,209,.3);gap:15px}.secondary:hover{background:rgba(155,221,201,.15)}.start-hint{display:flex;align-items:center;gap:9px;margin-top:21px;font-size:10px;color:#a8c6c4}kbd{font:600 9px "Segoe UI",sans-serif;letter-spacing:.6px;border:1px solid rgba(176,216,204,.3);border-bottom-width:2px;border-radius:4px;padding:3px 6px;color:#c2d7ce;white-space:nowrap}.hero-caption{position:absolute;left:58%;bottom:19%;transform:rotate(-3deg);display:flex;flex-direction:column;gap:8px}.hero-caption span{font-size:8px;letter-spacing:1.5px;color:#a1d5cc}.hero-caption strong{font-size:13px;font-weight:550;letter-spacing:.3px;color:#d8e7d4}.hero-caption:before{content:"";position:absolute;left:28px;top:-37px;width:25px;height:25px;border-left:1px solid rgba(167,218,197,.65);border-bottom:1px solid rgba(167,218,197,.65);border-radius:0 0 0 18px;transform:rotate(-15deg)}.home-bottom{position:absolute;left:5.5%;right:5.5%;bottom:29px;display:flex;justify-content:space-between;gap:12px;font-size:8px;font-weight:650;letter-spacing:1.5px;color:#b7d7cf}.home-bottom span:first-child{display:flex;align-items:center;gap:9px}.home-bottom b{margin-left:10px;color:var(--amber);font-size:14px}.hud{position:absolute;left:28px;right:24px;top:22px;display:flex;align-items:flex-start;justify-content:space-between;z-index:3;pointer-events:none}.hud button{pointer-events:auto;background:rgba(5,38,43,.55)}.scoreboard{display:flex;align-items:center;gap:20px;background:rgba(5,33,40,.76);border:1px solid var(--line);border-radius:10px;padding:13px 20px;backdrop-filter:blur(10px)}.scoreboard>div{display:flex;flex-direction:column;gap:4px}.label{font-size:8px;letter-spacing:1.6px;color:#bbd1c7;font-weight:650}.scoreboard strong{font-size:30px;letter-spacing:-1px;line-height:1.1;font-variant-numeric:tabular-nums}.scoreboard .record strong{font-size:21px;color:#a8c8bc}.score-rule{height:31px;width:1px;background:var(--line)}.objective{position:absolute;bottom:22px;left:28px;z-index:3;padding:11px 15px;background:rgba(5,33,40,.74);border:1px solid var(--line);border-radius:8px;display:grid;grid-template-columns:auto auto;gap:7px 16px;backdrop-filter:blur(8px);pointer-events:none}.objective>span{font-size:8px;letter-spacing:1.5px;color:var(--mint);font-weight:750}.objective small{font-size:10px;grid-column:1/-1;color:#b5cec5}.route-dots{display:flex;gap:5px;align-items:center}.route-dots i{width:6px;height:6px;border:1px solid #7ea89a;border-radius:50%}.route-dots i.filled{background:var(--amber);border-color:var(--amber)}.boss-hud{position:absolute;top:27px;left:50%;transform:translateX(-50%);width:265px;z-index:3;background:rgba(31,28,43,.85);padding:12px 15px;border:1px solid rgba(244,120,121,.3);border-radius:10px;pointer-events:none}.boss-id{display:flex;align-items:center;gap:9px}.boss-dot{width:7px;height:7px;background:#ff827f;border-radius:2px;transform:rotate(45deg)}.boss-id>span:nth-child(2){display:flex;align-items:center;gap:8px}.boss-id strong{font-size:14px;letter-spacing:1.5px}.boss-id small{font-size:7px;color:#efa7a3;letter-spacing:1px}.boss-clock{margin-left:auto;font-size:13px;font-variant-numeric:tabular-nums;color:#ffcec4}.boss-meter{height:4px;background:rgba(255,154,145,.15);margin-top:10px;border-radius:3px;overflow:hidden}.boss-meter i{display:block;width:0;height:100%;background:#ff9c8d}.boss-hud p{font-size:9px;color:#dec1be;margin:8px 0 0}.event-banner{pointer-events:none;position:absolute;top:34%;left:0;right:0;text-align:center;z-index:4;background:linear-gradient(90deg,transparent,rgba(34,20,38,.86),transparent);padding:23px 15px;animation:banner-in .35s ease-out}.event-banner>span{font-size:9px;letter-spacing:3px;color:#ffb9a4;font-weight:750;display:block}.event-banner strong{font-size:clamp(28px,4vw,46px);font-weight:800;letter-spacing:-1.3px;display:block;margin:8px 0;color:#fff0dc}.event-banner p{margin:0;color:#efc7b9;font-size:12px;line-height:1.5}.event-banner.victory{background:linear-gradient(90deg,transparent,rgba(8,48,47,.91),transparent)}.event-banner.victory>span{color:var(--mint)}.event-banner.victory p{color:#c1e9d0}.play-tip{position:absolute;left:50%;bottom:29px;transform:translateX(-50%);z-index:2;font-size:8px;letter-spacing:1.4px;color:#c9e7d5;white-space:nowrap;pointer-events:none;display:flex;align-items:center;gap:8px}.play-tip span{opacity:.4;margin:0 3px}.toast{position:absolute;top:125px;left:50%;transform:translateX(-50%);font-size:11px;white-space:nowrap;border:1px solid #86c8a755;border-radius:30px;color:var(--mint);background:#082f37e8;padding:9px 16px;z-index:4}.modal-screen{background:rgba(3,24,31,.55);backdrop-filter:blur(9px);display:grid;place-items:center;padding:22px}.modal-card{width:360px;max-width:100%;text-align:center;background:linear-gradient(145deg,#173d43f5,#092931fa);padding:34px 30px 24px;border:1px solid #709e934d;border-radius:17px;box-shadow:0 15px 60px #001e2766}.modal-card .eyebrow{justify-content:center;font-size:8px}.modal-card h2{font-size:30px;line-height:1.1;letter-spacing:-1.1px;margin:17px 0 14px;font-weight:800}.modal-card>p{font-size:12px;line-height:1.7;color:#b1cac3;margin:0 0 19px}.modal-card .primary{width:100%;margin-top:19px}.text-button{border:0;background:transparent;color:#c1d6cd;font-size:11px;padding:13px;min-height:44px}.text-button:hover{color:var(--amber)}.modal-card>small{display:block;font-size:9px;color:#8caba5;margin-top:7px}.end-stats{display:grid;grid-template-columns:1fr 1fr;border-block:1px solid var(--line);padding:18px 0;margin:18px 0}.end-stats>div{display:flex;flex-direction:column;gap:7px}.end-stats>div+div{border-left:1px solid var(--line)}.end-stats span{font-size:8px;letter-spacing:1.5px;color:#9dbaaf}.end-stats strong{font-size:35px;color:var(--amber);line-height:1;font-variant-numeric:tabular-nums}.end-stats>div+div strong{color:#b5d8c9}.modal-card .end-note{font-size:11px;line-height:1.5;margin-bottom:0;color:#b2cfc0}.field-guide{display:grid;grid-template-columns:1.08fr 1.1fr 1.1fr 1.23fr;gap:26px;padding:36px 0 31px;border-bottom:1px solid var(--line)}.guide-intro .eyebrow{font-size:8px;letter-spacing:1.7px;color:#8aacaa}.guide-intro h2{font-size:19px;font-weight:650;letter-spacing:-.5px;margin:10px 0 0;line-height:1.4}.guide-item{display:flex;align-items:flex-start;gap:14px;padding-top:4px}.guide-number{font-size:9px;font-weight:700;color:#6c9f95;line-height:2}.guide-item h3{font-size:12px;font-weight:650;margin:0 0 10px;line-height:1.5;color:#dfebde}.guide-item p{font-size:11px;line-height:1.85;color:#92b4ad;margin:0}.guide-item b{color:#bfdccb;font-weight:600}.guide-item kbd{font-size:8px;padding:1px 4px;letter-spacing:0}.boss-guide .guide-number{color:#ee9b82}footer{display:flex;justify-content:space-between;gap:15px;color:#72958f;font-size:7px;letter-spacing:1.4px;padding:22px 0 25px;font-weight:650}.footer-dot{padding:0 10px;color:#456b66}.fan-note{text-transform:none;letter-spacing:.2px;font-weight:400;font-size:9px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}@keyframes banner-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
@@ -14,6 +14,9 @@
 @media(max-width:650px){.app{padding:0 12px}.masthead{height:78px;gap:12px}.wordmark{font-size:19px;gap:10px}.brand-mark{width:36px;height:36px}.wordmark small{font-size:7px;letter-spacing:2px;margin-top:5px}.edition{display:none}.header-right{gap:0}.icon-button{width:40px;height:40px}.stage{height:660px;border-radius:14px}.home-screen{background:linear-gradient(180deg,rgba(5,39,44,.38),rgba(5,39,44,0) 39%,rgba(5,34,40,.85) 64%,rgba(5,34,40,.95))}.home-copy{left:25px;right:25px;top:auto;bottom:66px;max-width:none}.home-copy>.eyebrow{font-size:7px;letter-spacing:1.3px;gap:8px}h1{font-size:51px;line-height:1.02;letter-spacing:-2.7px;margin:14px 0}h1 br{display:none}h1 em{display:block}.home-copy>p{font-size:12px;line-height:1.75;margin:0 0 20px}.desktop-br{display:none}.home-actions{gap:10px}.home-actions .primary{flex:1}.primary,.secondary{font-size:11px;min-height:47px;padding:13px 16px;gap:10px}.start-hint{font-size:9px;margin-top:17px}.hero-caption{left:47%;bottom:auto;top:35%;transform:rotate(-4deg)}.hero-caption span{font-size:6px;letter-spacing:1px}.hero-caption strong{font-size:10px;max-width:160px}.hero-caption:before{left:8px;top:-33px;width:19px;height:23px}.home-bottom{left:25px;right:25px;bottom:25px;font-size:7px;letter-spacing:1px}.home-bottom span:first-child{display:none}.home-bottom span:last-child{width:100%;border-top:1px solid #a0c7ba33;padding-top:15px}.home-bottom b{float:right}.hud{left:13px;right:13px;top:13px}.scoreboard{padding:9px 12px;gap:12px;border-radius:8px}.label{font-size:7px;letter-spacing:1px}.scoreboard strong{font-size:26px}.scoreboard .record strong{font-size:19px}.score-rule{height:25px}.objective{left:13px;bottom:14px;padding:9px 11px;gap:6px 12px}.objective>span{font-size:7px}.objective small{font-size:9px}.play-tip{font-size:7px;letter-spacing:.7px;bottom:94px;gap:6px}.play-tip kbd{font-size:7px}.boss-hud{top:94px;left:50%;right:auto;transform:translateX(-50%);width:240px;padding:10px 13px}.boss-id strong{font-size:12px}.boss-hud p{font-size:8px}.event-banner{top:39%;padding:22px 15px}.event-banner>span{font-size:8px;letter-spacing:2px}.event-banner strong{font-size:32px}.event-banner p{font-size:10px;max-width:280px;margin:auto}.toast{top:170px;font-size:10px}.field-guide{padding:25px 8px 22px;grid-template-columns:1fr;gap:19px}.guide-item{padding:0;gap:14px}.guide-number{font-size:9px}.guide-item h3{font-size:12px;margin:0 0 4px}.guide-item p{font-size:11px}.guide-intro{display:none}footer{padding:18px 8px 23px;flex-direction:column;gap:10px;font-size:6px;letter-spacing:1px}.fan-note{font-size:8px}.modal-card{padding:29px 22px 19px}.modal-card h2{font-size:29px}.stage.is-playing{height:min(660px,calc(100svh - 96px));min-height:440px}}
 @media(max-width:370px){.home-copy{left:20px;right:20px}h1{font-size:46px}.home-actions{gap:6px}.primary,.secondary{padding-inline:11px;font-size:10px}.stage{height:650px}.home-copy>p{font-size:11px}}
 @media(max-height:550px) and (min-width:651px){.masthead{height:64px}.stage{height:390px}.home-copy{top:10%}.home-copy h1{font-size:44px;margin:12px 0}.home-copy>p{font-size:11px;margin-bottom:15px;line-height:1.6}.start-hint{margin-top:12px}.home-bottom{bottom:16px}.home-actions button{min-height:40px;padding-block:10px}.hero-caption{bottom:24%}.modal-card{padding:22px}.modal-card h2{font-size:25px;margin:12px 0}.end-stats{padding:12px 0;margin:12px 0}.end-stats strong{font-size:28px}.modal-card>p{margin-bottom:10px}}
+.shield-status{position:absolute;right:24px;bottom:22px;z-index:3;display:flex;align-items:center;gap:10px;padding:10px 13px;border:1px solid #93dae84d;border-radius:9px;background:#082d3cd9;backdrop-filter:blur(8px);color:#b4f3ff;pointer-events:none}.shield-status svg{width:22px;height:24px;flex-shrink:0}.shield-status>span{display:flex;flex-direction:column;gap:5px}.shield-status strong{font-size:8px;letter-spacing:1.2px}.shield-status small{font-size:9px;color:#b6d6dc}.shield-status.spent{border-color:#d9c3ff44;color:#deccf8;background:#262941dd}.pet-hud{border-color:#e3c89160;background:linear-gradient(135deg,#263348ed,#184748ed);width:275px}.pet-hud .boss-id strong{font-size:15px;letter-spacing:.1px;color:#f9e7ae}.pet-hud .pet-star{color:#ffe7a6;font-size:22px;line-height:1}.pet-hud .boss-clock{color:#f7e5b3}.pet-hud .boss-meter{background:#e3d39722}.pet-hud .boss-meter i{background:linear-gradient(90deg,#a3e6d8,#ffe2a0)}.pet-hud p{color:#c8e4dc}.pet-hud.fading{border-color:#eeb6a766}.pet-hud.fading .boss-meter i{background:#f1b39f}.pet-hud.fading p{color:#f1cbad}.objective{max-width:calc(100% - 56px)}.objective small{line-height:1.45}.toast{max-width:calc(100% - 36px);white-space:normal;text-align:center;line-height:1.4}.hero-caption strong{max-width:300px;line-height:1.4}
+@media(max-width:1000px) and (min-width:651px){.pet-hud{width:265px}.hero-caption strong{max-width:240px}}
+@media(max-width:650px){.shield-status{right:13px;bottom:82px;padding:8px 10px;gap:8px}.shield-status svg{width:18px;height:21px}.shield-status strong{font-size:7px;letter-spacing:.8px}.shield-status small{font-size:8px}.pet-hud{width:246px}.pet-hud .boss-id strong{font-size:14px}.pet-hud .pet-star{font-size:18px}.pet-hud p{font-size:8px}.hero-caption strong{max-width:167px}.objective{max-width:calc(100% - 26px)}.wordmark small{letter-spacing:1.2px;font-size:6.8px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
 
 </style>
@@ -23,7 +26,7 @@
   <header class="masthead">
     <a class="wordmark" href="#" id="homeLink" aria-label="Splashy Karp home">
       <svg class="brand-mark" viewBox="0 0 44 44" fill="none" aria-hidden="true"><rect x="1" y="1" width="42" height="42" rx="14" fill="#f5ab65"/><path d="M12 23L7 17V29L12 25C17 34 32 30 34 22C30 13 17 13 12 23Z" fill="#7e3a30"/><circle cx="27" cy="21" r="2.3" fill="#ffe5bd"/><path d="M17 17L21 9L25 17" fill="#7e3a30"/></svg>
-      <span>Splashy <b>Karp</b><small>THE CBK EDITION</small></span>
+      <span>Splashy <b>Karp</b><small>CBK · TEACHER’S PET UPDATE</small></span>
     </a>
     <div class="header-right"><span class="edition"><i></i> ONE LITTLE FISH. ONE BIG OCEAN.</span><button class="icon-button" id="soundBtn" aria-label="Turn sound on" aria-pressed="false" title="Sound (M)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M10 5L5 9H2V15H5L10 19Z"/><path id="soundWaves" d="M15 9L21 15M21 9L15 15"/></svg></button></div>
   </header>
@@ -36,13 +39,15 @@
       <button id="pauseBtn" class="icon-button pause-button" aria-label="Pause game" title="Pause (P)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg></button>
     </div>
     <div class="objective" id="objective" hidden><span id="objectiveText">THE SHALLOWS</span><div class="route-dots" id="routeDots" aria-hidden="true"><i></i><i></i><i></i><i></i></div><small id="objectiveSub">4 gates to uncharted water</small></div>
-    <div class="boss-hud" id="bossHud" hidden><div class="boss-id"><span class="boss-dot"></span><span><strong>CBK</strong><small>THE CRIMSON CURRENT</small></span><span class="boss-clock" id="bossClock">18s</span></div><div class="boss-meter" role="progressbar" id="bossMeter" aria-label="Boss encounter survival progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="bossFill"></i></div><p id="bossHint">Move out of the marked current.</p></div>
+    <div class="boss-hud" id="bossHud" hidden><div class="boss-id"><span class="boss-dot"></span><span><strong>CBK</strong><small>THE CRIMSON CURRENT</small></span><span class="boss-clock" id="bossClock">19s</span></div><div class="boss-meter" role="progressbar" id="bossMeter" aria-label="Boss encounter survival progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="bossFill"></i></div><p id="bossHint">Move out of the marked current.</p></div>
+    <div class="boss-hud pet-hud" id="petHud" hidden><div class="boss-id"><span class="pet-star" aria-hidden="true">✦</span><span><strong>Teacher’s Pet</strong></span><span class="boss-clock" id="petClock">15s</span></div><div class="boss-meter" role="progressbar" id="petMeter" aria-label="Teacher’s Pet power remaining in seconds" aria-valuemin="0" aria-valuemax="15" aria-valuenow="15"><i id="petFill"></i></div><p id="petHint">Smash through coral and lantern jellyfish.</p></div>
+    <div class="shield-status" id="shieldStatus" hidden><svg viewBox="0 0 24 26" fill="none" aria-hidden="true"><path d="M12 2L21 6V13Q20 21 12 24Q4 21 3 13V6Z" fill="#8fe6f122" stroke="currentColor" stroke-width="1.4"/><path d="M8 13L11 16L17 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong id="shieldStatusText">SHIELD READY</strong><small id="shieldStatusSub">One hit protected</small></span></div>
     <div class="event-banner" id="eventBanner" hidden aria-live="polite"><span id="eventEyebrow">SOMETHING STIRS BELOW</span><strong id="eventTitle">The water runs red.</strong><p id="eventText">CBK is approaching. Stay out of the red current.</p></div>
 
     <div class="screen home-screen" id="homeScreen">
-      <div class="home-copy"><span class="eyebrow"><i></i> A REEF-RUNNING ARCADE ADVENTURE</span><h1>Small fish.<br><em>Big trouble.</em></h1><p>A splash of courage. An ocean of trouble.<br>Find your rhythm, thread the coral, and<br class="desktop-br"> meet what’s waiting in the deep.</p><div class="home-actions"><button class="primary" id="startBtn">Start swimming <span aria-hidden="true">→</span></button><button class="secondary" id="practiceBtn">Boss practice <span aria-hidden="true">↗</span></button></div><div class="start-hint"><kbd>SPACE</kbd><span>or tap anywhere to swim</span></div></div>
-      <div class="hero-caption" aria-hidden="true"><span>MEET YOUR VERY UNLIKELY HERO</span><strong>Karp. All heart. Zero plan.</strong></div>
-      <div class="home-bottom"><span><i></i> EXPLORE THE SHALLOWS</span><span>CBK APPEARS AFTER 4 GATES <b>↗</b></span></div>
+      <div class="home-copy"><span class="eyebrow"><i></i> SHIELDS. EVOLUTION. A DEEPER OCEAN.</span><h1>Small fish.<br><em>Big trouble.</em></h1><p>Find a shield. Face the crimson current.<br>Earn your fins as Teacher’s Pet, then<br class="desktop-br"> light up the Lantern Grove.</p><div class="home-actions"><button class="primary" id="startBtn">Start swimming <span aria-hidden="true">→</span></button><button class="secondary" id="practiceBtn">Boss practice <span aria-hidden="true">↗</span></button></div><div class="start-hint"><kbd>SPACE</kbd><span>or tap anywhere to swim</span></div></div>
+      <div class="hero-caption" aria-hidden="true"><span>A LITTLE FISH WITH BIG POTENTIAL</span><strong>Survive CBK. Become Teacher’s Pet.</strong></div>
+      <div class="home-bottom"><span><i></i> TWO ZONES. ONE UNLIKELY HERO.</span><span>CBK APPEARS AFTER 4 GATES <b>↗</b></span></div>
     </div>
 
     <div class="screen modal-screen" id="pauseScreen" hidden><div class="modal-card"><span class="eyebrow">TAKE A BREATHER</span><h2>Just floating.</h2><p>The reef can wait. Pick up exactly where you left off.</p><button class="primary" id="resumeBtn">Keep swimming <span aria-hidden="true">→</span></button><button class="text-button" id="pauseHomeBtn">Back to shore</button><small>Space, P or Escape to resume</small></div></div>
@@ -53,9 +58,9 @@
 
   <section class="field-guide" aria-label="How to play">
     <div class="guide-intro"><span class="eyebrow">A QUICK FIELD GUIDE</span><h2>Go with the flow.<br>Mostly.</h2></div>
-    <div class="guide-item"><span class="guide-number">01</span><div><h3>Find your rhythm</h3><p>Tap, click or press <kbd>Space</kbd> to swim up. Let go to sink.</p></div></div>
-    <div class="guide-item"><span class="guide-number">02</span><div><h3>Take the scenic route</h3><p>Clear coral for <b>+1</b>. Catch glowing bubbles for <b>+3</b>.</p></div></div>
-    <div class="guide-item boss-guide"><span class="guide-number">03</span><div><h3>Don’t wake the current</h3><p>Four gates in, CBK arrives. Dodge the red warnings. Survive for <b>+25</b>.</p></div></div>
+    <div class="guide-item"><span class="guide-number">01</span><div><h3>Find your rhythm</h3><p>Tap, click or press <kbd>Space</kbd> to swim up. Pass coral for <b>+1</b>.</p></div></div>
+    <div class="guide-item"><span class="guide-number">02</span><div><h3>A little protection</h3><p>A <b>blue shield</b> absorbs one hit. Catch glowing bubbles for <b>+3</b>.</p></div></div>
+    <div class="guide-item boss-guide"><span class="guide-number">03</span><div><h3>Earn your bigger fins</h3><p>Survive CBK for <b>+25</b>. Become <b>Teacher’s Pet</b> for 15s and enter the Lantern Grove.</p></div></div>
   </section>
   <footer><span>MADE FOR ONE MORE TRY.</span><span>CBK · A SPLASHY KARP ADVENTURE <span class="footer-dot">/</span> <span class="fan-note">Unofficial fan-made game.</span></span></footer>
   <p class="sr-only" id="announcer" role="status" aria-live="polite"></p>
@@ -66,7 +71,7 @@
   const $ = id => document.getElementById(id);
   const canvas = $('canvas'), ctx = canvas.getContext('2d'), stage = $('game');
   const TAU = Math.PI * 2, H = 600, STEP = 1 / 120;
-  const BOSS_DURATION = 19, BOSS_GATE = 4;
+  const BOSS_DURATION = 19, BOSS_GATE = 4, EVOLUTION_DURATION = 15;
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
   const mix = (a, b, t) => a + (b - a) * t;
@@ -76,10 +81,12 @@
   let W = 1200, scale = 1, dpr = 1, mobile = false;
   let state = 'home', phase = 'reef', practice = false, score = 0, best = 0;
   let gatesPassed = 0, bubbleCount = 0, bossCleared = false, newBest = false;
+  let zone = 'shallows', zoneTime = 0, shield = false, recovery = 0, evolution = 0;
+  let shieldPops = 0, smashed = 0, evolutionWarned = false;
   let runTime = 0, phaseTime = 0, artTime = 0, gateTimer = 0, spawnCount = 0;
   let lastFrame = 0, accumulator = 0, toastUntil = 0, deathAt = 0;
-  let bossTint = 0, bossVisibility = 0, flash = 0;
-  let gates = [], bubbles = [], particles = [], floaters = [], shots = [], attacks = [];
+  let bossTint = 0, bossVisibility = 0, groveTint = 0;
+  let gates = [], bubbles = [], particles = [], floaters = [], shots = [], attacks = [], pickups = [], jellies = [];
   let fish = {x:210, y:300, vy:0, r:15, rotation:0, kick:0};
   let audioContext = null, soundEnabled = false;
   let previousUI = '';
@@ -131,13 +138,14 @@
     if (state !== 'home' && Math.abs(W - oldW) > 2) {
       // Keep each obstacle's time to contact stable when the viewport changes.
       const ratio = speedFor(W) / speedFor(oldW);
-      for (const item of [...gates, ...bubbles, ...shots]) item.x = fish.x + (item.x - oldX) * ratio;
+      for (const item of [...gates, ...bubbles, ...shots, ...pickups, ...jellies]) item.x = fish.x + (item.x - oldX) * ratio;
       for (const shot of shots) shot.vx *= ratio;
     }
     draw();
   }
   const speedFor = width => Math.min(207, Math.max(105, (width - Math.min(210, width * .23) + 65) / 2.5));
-  const speed = () => speedFor(W) * (bossCleared ? 1.07 : 1);
+  const speed = () => speedFor(W) * (bossCleared ? 1.07 : 1) * (evolution > 0 ? 1 + .22 * Math.min(1,evolution/3) : 1);
+  const hitRadius = () => evolution > 0 ? 29 : fish.r;
 
   function setScreens() {
     $('homeScreen').hidden = state !== 'home';
@@ -152,29 +160,32 @@
   function start(isPractice = false) {
     practice = isPractice; state = 'playing'; phase = isPractice ? 'warning' : 'reef';
     score = 0; gatesPassed = 0; bubbleCount = 0; bossCleared = false; newBest = false;
+    zone = 'shallows'; zoneTime = 0; shield = isPractice; recovery = 0; evolution = 0;
+    shieldPops = 0; smashed = 0; evolutionWarned = false; groveTint = 0;
     runTime = 0; phaseTime = 0; gateTimer = .7; spawnCount = 0; bossTint = 0;
-    gates = []; bubbles = []; particles = []; floaters = []; shots = []; attacks = [];
-    bossVisibility = 0; flash = 0; toastUntil = 0; $('toast').hidden = true;
+    gates = []; bubbles = []; particles = []; floaters = []; shots = []; attacks = []; pickups = []; jellies = [];
+    bossVisibility = 0; toastUntil = 0; $('toast').hidden = true;
     fish = {x:Math.min(210, W * .23), y:H * .49, vy:0, r:15, rotation:0, kick:0};
     $('scoreLabel').textContent = practice ? 'PRACTICE' : 'SCORE';
     $('score').textContent = '00'; $('best').textContent = pad(best);
     lastFrame = performance.now(); accumulator = 0;
     setScreens(); resize(); stage.focus({preventScroll:true});
     swim();
-    announce(practice ? 'Boss practice. CBK is approaching. Dodge the red current for nineteen seconds.' : 'Swim started. Pass four coral gates to meet CBK.');
+    announce(practice ? 'Boss practice. Your bubble shield absorbs one hit. Survive CBK to try Teacher’s Pet in the Lantern Grove.' : 'Swim started. Collect the blue bubble shield, then pass four coral gates to meet CBK.');
     if (practice) bossWarningSound();
   }
   function home() {
-    persistBest(); state = 'home'; phase = 'reef'; bossTint = 0; bossVisibility = 0;
-    gates = []; bubbles = []; shots = []; particles = []; floaters = []; attacks = [];
+    persistBest(); state = 'home'; phase = 'reef'; bossTint = 0; bossVisibility = 0; groveTint = 0;
+    zone = 'shallows'; shield = false; recovery = 0; evolution = 0; zoneTime = 0;
+    gates = []; bubbles = []; shots = []; particles = []; floaters = []; attacks = []; pickups = []; jellies = [];
     $('toast').hidden = true;
     setScreens(); resize(); $('startBtn').focus({preventScroll:true});
   }
   function swim() {
     if (state !== 'playing') return;
-    fish.vy = -290; fish.kick = 1;
-    burst(fish.x - 26, fish.y + 4, '#bfe5d7', 5, 'bubble');
-    tone(350, .11, 'sine', .028, 650);
+    fish.vy = evolution > 0 ? -270 : -290; fish.kick = 1;
+    burst(fish.x - (evolution > 0 ? 57 : 26), fish.y + 4, evolution > 0 ? '#ffe6a1' : '#bfe5d7', 5, 'bubble');
+    tone(evolution > 0 ? 460 : 350, .11, 'sine', .028, evolution > 0 ? 880 : 650);
   }
   function togglePause(force = false) {
     if (state === 'playing') {
@@ -193,14 +204,14 @@
     state = 'dead'; deathAt = performance.now();
     persistBest();
     const bossHit = reason === 'current';
-    $('endEyebrow').textContent = practiceWin ? 'CURRENT CONQUERED' : practice ? 'BOSS PRACTICE' : newBest ? 'A NEW PERSONAL BEST' : bossCleared ? 'YOU MET THE DEEP' : 'A GOOD LITTLE SPLASH';
-    $('endTitle').textContent = practiceWin ? 'Small fish. Big win.' : bossHit ? 'Quite the current.' : 'Back to the surface.';
-    $('endMessage').textContent = practiceWin ? 'You outlasted CBK. Now try the full reef run.' : bossHit ? 'CBK caught you in a crimson surge. Leave the red warning band before it fires.' : reason === 'boundary' ? 'A little too close to the surface or seabed. Keep your swim between the edges.' : 'The coral got a little too close. Aim for the open water between the tips.';
+    $('endEyebrow').textContent = practiceWin ? 'TEACHER’S PET · PRACTICE COMPLETE' : practice ? 'BOSS PRACTICE' : newBest ? 'A NEW PERSONAL BEST' : bossCleared ? 'THE LANTERN GROVE' : 'A GOOD LITTLE SPLASH';
+    $('endTitle').textContent = practiceWin ? 'Top of the class.' : bossHit ? 'Quite the current.' : reason === 'jellyfish' ? 'A little too electric.' : 'Back to the surface.';
+    $('endMessage').textContent = practiceWin ? 'You survived CBK and tried Teacher’s Pet. Take your new skills into the full reef run.' : bossHit ? 'CBK caught you in a crimson surge. Leave the red warning band before it fires.' : reason === 'boundary' ? 'A little too close to the surface or seabed. Keep your swim between the edges.' : reason === 'jellyfish' ? 'A lantern jellyfish caught you. Watch its drifting bell and tentacles once your evolution fades.' : 'The coral got a little too close. Aim for the open water between the tips.';
     $('endScoreLabel').textContent = practice ? 'SURVIVED' : 'YOUR SCORE';
-    $('endScore').textContent = practice ? `${Math.min(19, Math.floor(phase === 'warning' ? 0 : phaseTime))}s` : pad(score);
+    $('endScore').textContent = practice ? `${bossCleared ? 19 : Math.min(19, Math.floor(phase === 'warning' ? 0 : phaseTime))}s` : pad(score);
     $('endBestLabel').textContent = practice ? 'TARGET' : 'PERSONAL BEST';
     $('endBest').textContent = practice ? '19s' : pad(best);
-    $('endNote').textContent = practice ? 'Practice runs don’t change your personal best.' : bossCleared ? `CBK survived · ${gatesPassed} gates · ${bubbleCount} bubbles` : `${gatesPassed} of 4 gates to CBK. Find your rhythm, then find the deep.`;
+    $('endNote').textContent = practice ? 'Practice runs don’t change your personal best.' : bossCleared ? `Teacher’s Pet unlocked · ${smashed} smashed · ${shieldPops} shield saves` : `${gatesPassed} of 4 gates to CBK. A blue shield can save your next run.`;
     $('retryBtn').innerHTML = practiceWin ? 'Dive into the reef <span aria-hidden="true">→</span>' : `${practice ? 'Try CBK again' : 'Swim again'} <span aria-hidden="true">↗</span>`;
     $('retryBtn').dataset.practiceWin = String(practiceWin);
     setScreens(); $('retryBtn').focus({preventScroll:true});
@@ -216,6 +227,50 @@
     for (let i = 0; i < count; i++) particles.push({x,y,vx:rng(-75,65),vy:rng(-60,65),r:rng(1.5,4),life:rng(.35,.9),max:1,color,type});
     if (particles.length > 180) particles.splice(0, particles.length - 180);
   }
+  function toast(text, duration = 2.6) {
+    $('toast').textContent=text; $('toast').hidden=false; toastUntil=runTime+duration;
+  }
+  function collectShield() {
+    if (shield) return;
+    shield=true; burst(fish.x,fish.y,'#b4f3ff',18,'bubble');
+    tone(560,.17,'sine',.045,840); tone(1120,.19,'sine',.035,1320,.1);
+    toast('Bubble shield ready · one hit protected'); announce('Bubble shield ready. One collision is protected.');
+  }
+  function takeHit(reason, hazard = null) {
+    if (evolution > 0 || recovery > 0) return true;
+    if (!shield) { end(reason); return false; }
+    shield=false; shieldPops++; recovery=1.4;
+    if (reason==='coral' && hazard) {
+      fish.y=clamp(fish.y,hazard.cy-hazard.gap/2+32,hazard.cy+hazard.gap/2-32);
+      fish.vy=fish.y>hazard.cy?-90:90;
+    }
+    burst(fish.x,fish.y,'#b9f3ff',34,'bubble');
+    tone(850,.24,'sine',.05,150);
+    toast('Shield saved you · keep swimming'); announce('Shield used. Keep swimming; you have a brief recovery window.');
+    return true;
+  }
+  function smashGate(gate) {
+    if (gate.smashed) return;
+    gate.smashed=true; smashed++;
+    burst(gate.x+gate.w/2,fish.y,'#bdebe5',32);
+    if (!gate.passed) {gate.passed=true;gatesPassed++;addScore(1,fish.x+26,fish.y-45);}
+    tone(210,.17,'triangle',.04,480);
+  }
+  function enterGrove() {
+    zone='grove'; zoneTime=0; phase='reef'; phaseTime=0; gateTimer=.35;
+    gates=[]; bubbles=[]; pickups=[]; jellies=[]; spawnCount=0;
+    toast('ZONE 02 · THE LANTERN GROVE',3.2);
+    tone(392,.5,'sine',.035,440);tone(587,.5,'sine',.03,659,.16);tone(784,.65,'sine',.025,880,.32);
+    announce('Zone two: the Lantern Grove. Teacher’s Pet has fifteen seconds to smash coral and jellyfish.');
+    syncUI();
+  }
+  function endEvolution() {
+    evolution=0; recovery=Math.max(recovery,1.6);
+    burst(fish.x,fish.y,'#e7d1ff',22);
+    if (practice) {end('win',true);return;}
+    toast('Back to Karp · dodge the lantern jellyfish',3.2);
+    announce('Teacher’s Pet has faded. Keep exploring as Karp. Dodge the lantern jellyfish and look for blue shields.');
+  }
   function spawnGate() {
     const gap = bossCleared ? Math.max(193, 218 - (gatesPassed - 4) * 1.8) : 232;
     const lastCy = gates.length ? gates[gates.length - 1].cy : H * .5;
@@ -223,13 +278,18 @@
     const gate = {x:W + 65, w:mobile ? 52 : 69, cy, gap, passed:false, seed:spawnCount++};
     gates.push(gate);
     if (spawnCount % 2 === 0 || bossCleared) bubbles.push({x:gate.x + gate.w / 2 + 105, y:cy, r:12, phase:spawnCount});
+    if (!shield && (spawnCount===1 || (zone==='grove' && spawnCount%5===0))) pickups.push({x:gate.x-86,y:cy,r:18,phase:spawnCount});
+    if (zone==='grove' && spawnCount%2===0) {
+      const offset=spawnCount%4===0?-76:76;
+      jellies.push({x:gate.x+gate.w+speed()*.57,y:clamp(cy+offset,95,H-95),r:19,phase:spawnCount*.9,hit:false});
+    }
   }
   function circleRect(cx, cy, r, x, y, w, h) {
     const nx = clamp(cx, x, x+w), ny = clamp(cy, y, y+h);
     return (cx-nx)**2 + (cy-ny)**2 < r*r;
   }
   function beginWarning() {
-    phase = 'warning'; phaseTime = 0; gates = []; bubbles = []; shots = [];
+    phase = 'warning'; phaseTime = 0; gates = []; bubbles = []; shots = []; pickups = [];
     bossWarningSound(); syncUI();
     announce('Four gates cleared. CBK approaches. Dodge the marked red current.');
   }
@@ -245,21 +305,33 @@
     bossCleared = true; shots = []; attacks = []; burst(fish.x,fish.y,'#cef8ba',36);
     addScore(25, fish.x+15,fish.y-30);
     tone(440,.2,'sine',.06,440); tone(554,.2,'sine',.06,554,.14); tone(660,.35,'sine',.06,880,.28);
-    if (practice) { end('win',true); return; }
+    evolution=EVOLUTION_DURATION; evolutionWarned=false;
     phase = 'victory'; phaseTime = 0;
-    announce('CBK survived. Twenty-five bonus points. The reef run continues.'); syncUI();
+    announce('CBK survived. Twenty-five bonus points. Evolution unlocked: Teacher’s Pet. The Lantern Grove awaits.'); syncUI();
   }
   function update(dt) {
     if (state !== 'playing') return;
     runTime += dt; phaseTime += dt;
-    fish.vy = Math.min(420,fish.vy+720*dt); fish.y += fish.vy*dt;
+    recovery=Math.max(0,recovery-dt);
+    if (zone==='grove') {
+      zoneTime+=dt; groveTint=Math.min(1,groveTint+dt*.7);
+      if (evolution>0 && phase==='reef') {
+        evolution=Math.max(0,evolution-dt);
+        if (evolution<=3 && !evolutionWarned) {evolutionWarned=true;toast('Evolution fading · prepare to dodge',2.8);announce('Teacher’s Pet fades in three seconds. Prepare to dodge.');}
+        if (evolution===0) {endEvolution();if(state!=='playing')return;}
+      }
+    }
+    fish.vy = Math.min(420,fish.vy+(evolution>0?620:720)*dt); fish.y += fish.vy*dt;
     fish.rotation = mix(fish.rotation,clamp(fish.vy/650,-.45,.65),Math.min(1,dt*10));
     fish.kick = Math.max(0,fish.kick-dt*4);
     const transition = phase === 'warning' || phase === 'victory';
-    if (transition) {
+    if (transition || evolution>0 || recovery>0) {
       if (fish.y < 32) {fish.y=32;fish.vy=20;}
       if (fish.y > H-42) {fish.y=H-42;fish.vy=-150;}
-    } else if (fish.y < 20 || fish.y > H-25) { end('boundary'); return; }
+    } else if (fish.y < 20 || fish.y > H-25) {
+      if (!takeHit('boundary')) return;
+      fish.y=clamp(fish.y,32,H-42); fish.vy=fish.y>H/2?-150:100;
+    }
 
     if (phase === 'reef') {
       gateTimer -= dt;
@@ -267,22 +339,38 @@
       for (const gate of gates) {
         gate.x -= speed()*dt;
         const topH = gate.cy-gate.gap/2, bottomY=gate.cy+gate.gap/2;
-        if (circleRect(fish.x,fish.y,fish.r,gate.x,0,gate.w,topH) || circleRect(fish.x,fish.y,fish.r,gate.x,bottomY,gate.w,H-bottomY)) {end('coral');return;}
+        if (circleRect(fish.x,fish.y,hitRadius(),gate.x,0,gate.w,topH) || circleRect(fish.x,fish.y,hitRadius(),gate.x,bottomY,gate.w,H-bottomY)) {
+          if (evolution>0) {smashGate(gate);continue;}
+          if (!takeHit('coral',gate)) return;
+        }
         if (!gate.passed && gate.x+gate.w < fish.x-fish.r) {
           gate.passed=true;gatesPassed++;addScore(1,fish.x+5,fish.y-35);
           tone(680,.12,'sine',.032,820);
           if (!bossCleared && gatesPassed === BOSS_GATE) {beginWarning();break;}
         }
       }
-      gates=gates.filter(g=>g.x+g.w>-25);
+      gates=gates.filter(g=>!g.smashed&&g.x+g.w>-25);
       for (const b of bubbles) {
         b.x-=speed()*dt; const by=b.y+Math.sin(artTime*2+b.phase)*5;
-        if (Math.hypot(fish.x-b.x,fish.y-by)<fish.r+b.r) {
+        if (Math.hypot(fish.x-b.x,fish.y-by)<hitRadius()+b.r) {
           b.hit=true;bubbleCount++;addScore(3,b.x,by-10);burst(b.x,by,'#d8ffe2',14);
           tone(870,.14,'sine',.05,1100);tone(1300,.15,'sine',.03,1600,.07);
         }
       }
       bubbles=bubbles.filter(b=>!b.hit&&b.x>-30);
+      for (const p of pickups) {
+        p.x-=speed()*dt; const py=p.y+Math.sin(artTime*2+p.phase)*5;
+        if (Math.hypot(fish.x-p.x,fish.y-py)<hitRadius()+p.r) {p.hit=true;collectShield();}
+      }
+      pickups=pickups.filter(p=>!p.hit&&p.x>-35);
+      for (const j of jellies) {
+        j.x-=speed()*dt; const jy=j.y+Math.sin(artTime*1.6+j.phase)*18;
+        if (circleRect(fish.x,fish.y,hitRadius(),j.x-17,jy-13,34,48)) {
+          if (evolution>0) {j.hit=true;smashed++;addScore(2,j.x,jy-22);burst(j.x,jy,'#e6b7ff',22);tone(650,.14,'sine',.04,1200);}
+          else {if(!takeHit('jellyfish',j))return;j.hit=true;burst(j.x,jy,'#d9bfff',16);}
+        }
+      }
+      jellies=jellies.filter(j=>!j.hit&&j.x>-45);
     } else if (phase === 'warning') {
       if (phaseTime >= 2.8) beginBoss();
     } else if (phase === 'boss') {
@@ -301,12 +389,12 @@
       }
       for (const s of shots) {
         s.x+=s.vx*dt;
-        if (Math.hypot(fish.x-s.x,fish.y-s.y)<fish.r+s.r-3) {end('current');return;}
+        if (Math.hypot(fish.x-s.x,fish.y-s.y)<fish.r+s.r-3) {if(!takeHit('current',s))return;s.hit=true;}
       }
-      shots=shots.filter(s=>s.x>-55);
+      shots=shots.filter(s=>!s.hit&&s.x>-55);
       if (phaseTime>=BOSS_DURATION) {bossWin();return;}
     } else if (phase === 'victory') {
-      if (phaseTime>=2.7) {phase='reef';phaseTime=0;gateTimer=.9;gates=[];bubbles=[];syncUI();}
+      if (phaseTime>=2.7) enterGrove();
     }
     updateEffects(dt); syncUI();
   }
@@ -319,16 +407,29 @@
   }
   function syncUI() {
     const active=state==='playing'||state==='paused';
-    const uiKey=[state,phase,gatesPassed,Math.ceil(BOSS_DURATION-phaseTime),Math.floor(phaseTime*8),Math.floor(runTime)].join('|');
+    const uiKey=[state,phase,zone,shield,Math.ceil(recovery*4),Math.ceil(evolution*10),gatesPassed,Math.ceil(BOSS_DURATION-phaseTime),Math.floor(phaseTime*8),Math.floor(runTime)].join('|');
     if(uiKey===previousUI)return;previousUI=uiKey;
-    $('objective').hidden=!active||practice;
-    $('playTip').hidden=state!=='playing'||runTime>4||phase!=='reef';
+    $('objective').hidden=!active||(practice&&zone!=='grove');
+    $('playTip').hidden=state!=='playing'||runTime>3||shield||phase!=='reef';
     $('bossHud').hidden=!active||phase!=='boss';
     $('eventBanner').hidden=!active||!['warning','victory'].includes(phase);
+    $('shieldStatus').hidden=!active||(!shield&&recovery<=0);
+    $('shieldStatus').classList.toggle('spent',!shield);
+    $('shieldStatusText').textContent=shield?'SHIELD READY':'RECOVERING';
+    $('shieldStatusSub').textContent=shield?'One hit protected':'Keep swimming';
+    $('petHud').hidden=!active||evolution<=0||phase!=='reef';
     if(!active)return;
-    $('objectiveText').textContent=bossCleared?'BEYOND THE REEF':phase==='reef'?'THE SHALLOWS':'UNCHARTED WATER';
-    $('objectiveSub').textContent=bossCleared?'CBK survived · keep exploring':phase==='reef'?`${Math.max(0,4-gatesPassed)} ${gatesPassed===3?'gate':'gates'} to uncharted water`:'Keep clear of the crimson surges';
+    $('objectiveText').textContent=zone==='grove'?'02 · THE LANTERN GROVE':phase==='reef'?'01 · THE SHALLOWS':'UNCHARTED WATER';
+    $('objectiveSub').textContent=zone==='grove'?(evolution>0?'Smash coral +1 · jellyfish +2':'Dodge the drifting jellyfish'):phase==='reef'?`${Math.max(0,4-gatesPassed)} ${gatesPassed===3?'gate':'gates'} to uncharted water`:'Keep clear of the crimson surges';
+    $('routeDots').hidden=zone==='grove';
     $('routeDots').querySelectorAll('i').forEach((dot,i)=>dot.classList.toggle('filled',gatesPassed>i));
+    if(evolution>0){
+      $('petClock').textContent=`${Math.ceil(evolution)}s`;
+      $('petFill').style.width=(evolution/EVOLUTION_DURATION*100)+'%';
+      $('petMeter').setAttribute('aria-valuenow',String(Math.ceil(evolution)));
+      $('petHud').classList.toggle('fading',evolution<=3);
+      $('petHint').textContent=evolution<=3?'Evolution fading. Get ready to dodge.':'Smash through coral and lantern jellyfish.';
+    }
     if(phase==='boss'){
       $('bossClock').textContent=`${Math.max(0,Math.ceil(BOSS_DURATION-phaseTime))}s`;
       const progress=clamp(phaseTime/BOSS_DURATION*100,0,100);
@@ -338,9 +439,9 @@
     }
     if(phase==='warning'||phase==='victory'){
       const win=phase==='victory';$('eventBanner').classList.toggle('victory',win);
-      $('eventEyebrow').textContent=win?'THE LITTLE FISH DID IT':'SOMETHING STIRS BELOW';
-      $('eventTitle').textContent=win?'Big trouble. Outlasted.':'The water runs red.';
-      $('eventText').textContent=win?'+25 points · CBK retreats. Your reef run continues.':'CBK is approaching. Dodge the marked red current.';
+      $('eventEyebrow').textContent=win?'EVOLUTION UNLOCKED · +25 POINTS':'SOMETHING STIRS BELOW';
+      $('eventTitle').textContent=win?'Teacher’s Pet':'The water runs red.';
+      $('eventText').textContent=win?'15 seconds of power. Smash into the Lantern Grove.':'CBK is approaching. Dodge the marked red current.';
     }
   }
 
@@ -398,6 +499,7 @@
     ctx.lineWidth=width;ctx.strokeStyle=color;ctx.stroke();
   }
   function waterBackground() {
+    if(zone==='grove'&&groveTint>=1){drawGroveBackground();return;}
     const t=artClock(), drift=state==='home'?t*5:artTime*13;
     const g=ctx.createLinearGradient(0,0,W*.2,H);
     g.addColorStop(0,'#276e6c');g.addColorStop(.35,'#13515b');g.addColorStop(.72,'#0b384c');g.addColorStop(1,'#092b3e');
@@ -449,6 +551,48 @@
     }
     ctx.globalAlpha=1;
     if(bossTint>.002){ctx.fillStyle=`rgba(45,8,36,${bossTint*.49})`;ctx.fillRect(0,0,W,H);const r=ctx.createRadialGradient(W*.92,H*.43,10,W*.9,H*.5,W*.65);r.addColorStop(0,`rgba(193,48,60,${bossTint*.2})`);r.addColorStop(1,'rgba(110,20,51,0)');ctx.fillStyle=r;ctx.fillRect(0,0,W,H);}
+    if(groveTint>.001){ctx.save();ctx.globalAlpha=groveTint;drawGroveBackground();ctx.restore();}
+  }
+  function drawGroveBackground() {
+    const t=artClock(),drift=t*14;
+    const g=ctx.createLinearGradient(0,0,W*.3,H);
+    g.addColorStop(0,'#101c3b');g.addColorStop(.45,'#20294b');g.addColorStop(.8,'#1c334b');g.addColorStop(1,'#102935');
+    ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+    for(let i=0;i<4;i++){
+      const x=W*(.12+i*.3), y=H*(i%2?.3:.75);
+      const glow=ctx.createRadialGradient(x,y,5,x,y,210);
+      glow.addColorStop(0,i%2?'rgba(134,103,219,.15)':'rgba(83,203,192,.13)');glow.addColorStop(1,'rgba(78,108,163,0)');
+      ctx.fillStyle=glow;ctx.fillRect(x-212,y-212,424,424);
+    }
+    // The hanging cave and drowned pillars form a new silhouette, not just a new palette.
+    for(let layer=0;layer<2;layer++){
+      ctx.beginPath();ctx.moveTo(0,0);
+      for(let x=0;x<W+25;x+=23){const q=x+drift*(.15+layer*.12);ctx.lineTo(x,28+layer*18+Math.sin(q*.017)*15+Math.pow(Math.max(0,Math.sin(q*.029+layer)),10)*(70+layer*35));}
+      ctx.lineTo(W,0);ctx.closePath();ctx.fillStyle=layer?'#17233b':'#0f1c33';ctx.fill();
+    }
+    for(let i=0;i<Math.ceil(W/230)+2;i++){
+      const x=((i*246-drift*.24)%(W+400)+W+400)%(W+400)-90,h=100+hash(i+832)*125;
+      path(`M${x-34} ${H}L${x-26} ${H-h}Q${x-5} ${H-h-35} ${x+22} ${H-h+4}L${x+46} ${H}Z`,'#233147');
+      path(`M${x-26} ${H-h}Q${x-5} ${H-h-28} ${x+18} ${H-h+5}`,null,'#52658260',2);
+      for(let j=0;j<3;j++)ellipse(x-8+j*10,H-h+14+j*12,2,3,'#83dccb44');
+    }
+    // Translucent distant lanterns contrast with the solid, bright gameplay jellyfish.
+    ctx.save();ctx.globalAlpha*=.25;
+    for(let i=0;i<11;i++){
+      const x=((hash(i+511)*W-t*(4+hash(i)*7))%(W+60)+W+60)%(W+60)-30;
+      const y=100+hash(i+440)*320+Math.sin(t*.5+i)*12,s=.35+hash(i+551)*.5;
+      drawJelly(x,y,s,t+i,false);
+    }
+    ctx.restore();
+    for(let i=0;i<54;i++){
+      const x=hash(i+821)*W+Math.sin(t*.3+i)*5,y=((hash(i+912)*H-t*5)%H+H)%H;
+      ellipse(x,y,.7+hash(i)*1.3,.7+hash(i)*1.3,i%3===0?'#e5c4ff66':'#a2ead65e');
+    }
+    for(let i=0;i<Math.ceil(W/55);i++){
+      const x=i*67-drift*.11%(67),y=H-8;
+      drawKelp(x,y,30+hash(i+119)*76,i%2?'#366578':'#514c7c',i,t);
+      ellipse(x,y-11,7,3,'#9fdfc77a');
+    }
   }
   function drawArch(x,y,s) {
     ctx.save();ctx.translate(x,y);ctx.scale(s,s);
@@ -480,6 +624,16 @@
   }
   function drawSeabed() {
     const t=artClock(), drift=state==='home'?t*3:artTime*20;
+    if(zone==='grove'){
+      ctx.fillStyle='#102534';ctx.fillRect(0,H-7,W,7);
+      for(let i=0;i<Math.ceil(W/110)+2;i++){
+        const x=((i*121-drift)%(W+250)+W+250)%(W+250)-60;
+        branchingCoral(x,H+9,.42,i%2?'#6b6594':'#357b81',i);
+        ellipse(x+30,H-4,24,9,'#223b51');
+        for(let j=0;j<4;j++)ellipse(x+j*13,H-7-Math.sin(j)*6,1.6,1.2,'#ace8d9');
+      }
+      return;
+    }
     ctx.beginPath();ctx.moveTo(0,H);for(let x=0;x<=W+20;x+=15)ctx.lineTo(x,H-9-Math.sin((x+drift)*.013)*4);ctx.lineTo(W,H);ctx.fillStyle='#072b36';ctx.fill();
     for(let i=0;i<Math.ceil(W/130)+3;i++){
       const x=((i*148-drift)%(W+300)+(W+300))%(W+300)-80;
@@ -497,16 +651,94 @@
     const x=gate.x,w=gate.w;
     ctx.save();ctx.translate(x,top?h:H-h);if(top)ctx.scale(1,-1);
     // Everything solid stays within the rectangular collision envelope.
-    const g=ctx.createLinearGradient(0,0,w,0);g.addColorStop(0,'#a35061');g.addColorStop(.3,'#d5787c');g.addColorStop(.58,'#c76a75');g.addColorStop(1,'#834457');
+    const g=ctx.createLinearGradient(0,0,w,0);g.addColorStop(0,zone==='grove'?'#68547d':'#a35061');g.addColorStop(.3,zone==='grove'?'#9291c2':'#d5787c');g.addColorStop(.58,zone==='grove'?'#71779d':'#c76a75');g.addColorStop(1,zone==='grove'?'#3f4b70':'#834457');
     ctx.beginPath();ctx.moveTo(0,h+2);ctx.lineTo(0,23);ctx.quadraticCurveTo(0,8,8,7);ctx.lineTo(w*.22,13);ctx.lineTo(w*.28,5);ctx.quadraticCurveTo(w*.36,-1,w*.43,4);ctx.lineTo(w*.54,15);ctx.lineTo(w*.65,6);ctx.quadraticCurveTo(w*.75,-1,w*.83,6);ctx.lineTo(w*.89,18);ctx.quadraticCurveTo(w,9,w,30);ctx.lineTo(w,h+2);ctx.closePath();ctx.fillStyle=g;ctx.fill();
     ctx.save();ctx.clip();
-    ctx.globalAlpha=.34;ctx.strokeStyle='#722f4c';ctx.lineWidth=4;ctx.lineCap='round';
+    ctx.globalAlpha=.34;ctx.strokeStyle=zone==='grove'?'#2e4561':'#722f4c';ctx.lineWidth=4;ctx.lineCap='round';
     for(let j=0;j<4;j++){ctx.beginPath();ctx.moveTo(10+j*15,h+5);ctx.bezierCurveTo(4+j*16,h*.7,24+j*12,h*.45,9+j*16,14);ctx.stroke();}
     ctx.globalAlpha=.37;
-    for(let j=0;j<Math.ceil(h/20);j++)for(let k=0;k<3;k++){const xx=8+k*(w-16)/3+hash(j*7+k+gate.seed)*8,yy=22+j*21;ellipse(xx,yy,2,2.4,'#e8a391');}
+    for(let j=0;j<Math.ceil(h/20);j++)for(let k=0;k<3;k++){const xx=8+k*(w-16)/3+hash(j*7+k+gate.seed)*8,yy=22+j*21;ellipse(xx,yy,2,2.4,zone==='grove'?'#caf4e8':'#e8a391');}
     ctx.globalAlpha=.22;ctx.fillStyle='#ffc6a4';ctx.fillRect(6,10,4,h);ctx.restore();
     ctx.strokeStyle='#ffd0ae88';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(4,20);ctx.quadraticCurveTo(3,9,9,9);ctx.moveTo(w*.3,9);ctx.quadraticCurveTo(w*.35,2,w*.42,7);ctx.moveTo(w*.68,9);ctx.quadraticCurveTo(w*.76,2,w*.8,8);ctx.stroke();
     ctx.restore();
+  }
+  function drawTeachersPet(x,y,s,rotation,t) {
+    ctx.save();ctx.translate(x,y);ctx.rotate(rotation*.7);ctx.scale(s,s);ctx.lineJoin='round';ctx.lineCap='round';
+    const pulse=Math.sin(t*5)*3;
+    // A compact swimming dragon keeps the full silhouette visible on phone screens.
+    ctx.save();ctx.translate(-71,6+pulse);ctx.rotate(Math.sin(t*6)*.12);
+    path('M4-7Q-16-29-28-23Q-17-4-33 5Q-16 12-25 27Q-4 20 6 8Z','#dfefcb','#37696b',1.7);
+    path('M0-1L-19-14M0 4L-21 8M0 8L-16 20',null,'#c2b985',1.4);ctx.restore();
+    for(let i=8;i>=0;i--){
+      const u=i/8,xx=13-u*79,yy=Math.sin(u*4+t*3)*7+u*6,r=24-u*15;
+      path(`M${xx-8} ${yy-r*.55}L${xx-6} ${yy-r-13}L${xx+9} ${yy-r*.4}Z`,'#f0d598','#526c67',1.4);
+      const g=ctx.createLinearGradient(xx,yy-r,xx,yy+r);g.addColorStop(0,'#b1e9d8');g.addColorStop(.45,'#64b6bb');g.addColorStop(1,'#367c91');
+      ellipse(xx,yy,r,r*.82,g,'#28556a',1.8);
+      ellipse(xx+2,yy+r*.31,r*.74,r*.4,'#f1deac');
+      path(`M${xx-r*.55} ${yy+r*.27}Q${xx} ${yy+r*.46} ${xx+r*.65} ${yy+r*.24}`,null,'#c3ba8d',1);
+    }
+    path('M-10 6Q-25 24-36 32Q-7 41 12 16Z','#d7f4e0','#376874',1.5);
+    path('M-7 13L-26 30M-1 17L-13 32',null,'#8bbfb5',1);
+    // Gold swept horns and a star crest make the evolution feel like a reward.
+    path('M6-22Q-5-52-20-53L-9-30L-19-29L-2-13Z','#f4df9f','#536760',1.5);
+    path('M19-25Q18-48 33-52Q29-35 33-24Z','#ffeab0','#536760',1.6);
+    const head=ctx.createLinearGradient(0,-25,32,26);head.addColorStop(0,'#bfefda');head.addColorStop(.5,'#72c3c3');head.addColorStop(1,'#3c92aa');
+    path('M-7-17Q6-35 29-25Q47-17 45 1L49 11Q39 28 15 24Q-11 19-7-17Z',head,'#28566a',2);
+    path('M14 17Q32 26 47 12L45 21Q28 35 11 22Z','#f6e8be','#447070',1.2);
+    ellipse(29,-9,10,11,'#fff8df','#508182',1.2);ellipse(33,-9,3.8,6,'#203d55');ellipse(34,-11,1.3,1.5,'#ffffff');
+    path('M21-23Q30-26 38-17',null,'#357281',2);
+    path('M47 9Q39 18 32 12',null,'#285569',1.6);ellipse(42,1,1.5,1.1,'#39737f');
+    path('M42 16Q63 24 68 5M40 19Q56 40 69 29',null,'#375e6b',3.5);
+    path('M42 16Q63 24 68 5M40 19Q56 40 69 29',null,'#f7e7ab',2);
+    path('M8-42L12-33L22-31L14-24L14-15L6-20L-2-16L0-26L-6-32L4-34Z','#ffe8a4','#8a966c',1.2);
+    ctx.restore();
+  }
+  function drawPlayer(t) {
+    if(evolution>0){
+      const glow=ctx.createRadialGradient(fish.x-4,fish.y,10,fish.x-4,fish.y,88);
+      glow.addColorStop(0,'rgba(190,246,210,.24)');glow.addColorStop(1,'rgba(190,246,210,0)');ctx.fillStyle=glow;ctx.fillRect(fish.x-94,fish.y-90,180,180);
+      ctx.save();ctx.globalAlpha=evolution<=3?.8:1;
+      const petScale=mobile?Math.min(.82,(fish.x-7)/105):.94;
+      drawTeachersPet(mobile?fish.x:fish.x-8,fish.y,petScale,fish.rotation,t);ctx.restore();
+      for(let i=0;i<5;i++){
+        const a=t*.75+i*TAU/5,x=fish.x+Math.cos(a)*64,y=fish.y+Math.sin(a)*47;
+        path(`M${x} ${y-3}L${x+1} ${y-1}L${x+3} ${y}L${x+1} ${y+1}L${x} ${y+3}L${x-1} ${y+1}L${x-3} ${y}L${x-1} ${y-1}Z`,'#ffebae99');
+      }
+    }else{
+      ctx.save();if(recovery>0)ctx.globalAlpha=.78;
+      drawKarp(fish.x,fish.y,.66,fish.rotation,t,false);ctx.restore();
+    }
+    if(shield||recovery>0){
+      const r=evolution>0?62:48;
+      ctx.save();ctx.globalAlpha=evolution>0?.48:1;
+      const g=ctx.createRadialGradient(fish.x-8,fish.y-9,2,fish.x-8,fish.y,r+5);g.addColorStop(0,'rgba(123,218,241,.02)');g.addColorStop(.78,'rgba(155,235,255,.035)');g.addColorStop(1,'rgba(193,249,255,.19)');
+      ellipse(fish.x-7,fish.y,r+6,r,g,shield?'#b4f4ffaf':'#e2d3ff80',1.2);
+      path(`M${fish.x-r+2} ${fish.y-8}Q${fish.x-r+5} ${fish.y-r+7} ${fish.x-15} ${fish.y-r+5}`,null,'#e3fbffac',2);
+      ctx.restore();
+    }
+  }
+  function drawJelly(x,y,s,t,hazard=true) {
+    ctx.save();ctx.translate(x,y);ctx.scale(s,s);
+    const glow=ctx.createRadialGradient(0,0,4,0,0,42);glow.addColorStop(0,hazard?'rgba(221,148,248,.2)':'rgba(113,221,220,.25)');glow.addColorStop(1,'rgba(168,116,235,0)');ctx.fillStyle=glow;ctx.fillRect(-43,-43,86,86);
+    for(let i=0;i<4;i++){
+      const xx=-12+i*8,sway=Math.sin(t*2+i)*5;
+      ctx.beginPath();ctx.moveTo(xx,8);ctx.bezierCurveTo(xx+sway,18,xx-sway,25,xx+sway*.5,36+i%2*4);ctx.strokeStyle=hazard?'#e0b1ec':'#aee8e1';ctx.lineWidth=2;ctx.stroke();
+    }
+    const bell=ctx.createLinearGradient(0,-21,0,11);bell.addColorStop(0,hazard?'#f1c1ec':'#c5eee5');bell.addColorStop(.45,hazard?'#c187c2':'#8bc4d9');bell.addColorStop(1,hazard?'#815f9c':'#6691bb');
+    path('M-23 8Q-25-12-9-20Q0-25 12-17Q25-7 23 8Q17 15 10 9Q3 15-3 10Q-13 17-23 8Z',bell,hazard?'#e8c7ec':'#c2f1e6',1.2);
+    path('M-15-1Q-15-11-7-14',null,'#ffe5f2a0',2);
+    ellipse(-6,0,2.3,3.1,'#494167');ellipse(6,0,2.3,3.1,'#494167');
+    if(hazard)path('M-3 7Q0 4 3 7',null,'#524369',1.2);
+    ctx.restore();
+  }
+  function drawShieldPickups() {
+    for(const p of pickups){
+      const y=p.y+Math.sin(artTime*2+p.phase)*5;
+      const glow=ctx.createRadialGradient(p.x,y,1,p.x,y,34);glow.addColorStop(0,'rgba(139,236,255,.25)');glow.addColorStop(1,'rgba(139,236,255,0)');ctx.fillStyle=glow;ctx.fillRect(p.x-35,y-35,70,70);
+      ellipse(p.x,y,p.r+3,p.r+3,'rgba(129,219,246,.09)','#baf4ff',1.3);
+      path(`M${p.x} ${y-12}L${p.x+10} ${y-8}L${p.x+9} ${y+2}Q${p.x+7} ${y+9} ${p.x} ${y+13}Q${p.x-8} ${y+8} ${p.x-9} ${y+2}L${p.x-10} ${y-8}Z`,'#a9edff44','#d8fbff',1.2);
+      path(`M${p.x-5} ${y}L${p.x-1} ${y+4}L${p.x+6} ${y-4}`,null,'#efffff',1.6);
+    }
   }
   function drawKarp(x,y,s,rotation,t,hero=false) {
     ctx.save();ctx.translate(x,y);ctx.rotate(rotation);ctx.scale(s,s);ctx.lineJoin='round';ctx.lineCap='round';
@@ -653,8 +885,9 @@
         drawCBK(W*.87+enter,by,bossScale(),t,clamp(bossVisibility,0,1));
       }
       for(const gate of gates){drawCoralGate(gate,true);drawCoralGate(gate,false);}
-      drawCollectibles();drawShots();
-      drawKarp(fish.x,fish.y,.66,fish.rotation,t,false);
+      for(const j of jellies)drawJelly(j.x,j.y+Math.sin(artTime*1.6+j.phase)*18,1,t+j.phase,true);
+      drawCollectibles();drawShieldPickups();drawShots();
+      drawPlayer(t);
       drawEffects();
     }
     drawSeabed();
