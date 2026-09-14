@@ -1,788 +1,691 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#07556d" />
-  <title>Splashy Karp — Reef Runner</title>
-  <meta name="description" content="A sea-themed tap-to-swim arcade game." />
-  <style>
-    :root {
-      --bg: #031f2a;
-      --panel: rgba(5, 53, 68, 0.88);
-      --panel2: rgba(8, 71, 88, 0.72);
-      --text: #eefcff;
-      --muted: #a9d8e2;
-      --accent: #ffd166;
-      --accent-2: #f4a340;
-      --border: rgba(255,255,255,.14);
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#071f28">
+<meta name="description" content="A little Karp, a living reef, and a very big red sea serpent. A one-button ocean arcade adventure.">
+<title>CBK — Splashy Karp</title>
+<style>
+:root{color-scheme:dark;--paper:#f1efe1;--muted:#97b5b8;--mint:#b5edcf;--amber:#ffc385;--ink:#071f28;--line:rgba(181,219,207,.14)}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#071f28}body{color:var(--paper);font-family:"Avenir Next","Segoe UI",Arial,sans-serif;-webkit-font-smoothing:antialiased;background:radial-gradient(ellipse at 50% 0,rgba(47,87,83,.3),transparent 65%),#071f28}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit;cursor:pointer}button:disabled{cursor:default}button:focus-visible,a:focus-visible,.stage:focus-visible{outline:2px solid var(--amber);outline-offset:5px}button{touch-action:manipulation}button svg{pointer-events:none}[hidden]{display:none!important}.app{width:min(1320px,100%);padding:0 40px;margin:0 auto}.masthead{height:102px;display:flex;align-items:center;justify-content:space-between;gap:20px}.wordmark{display:flex;align-items:center;gap:12px;color:var(--paper);text-decoration:none;font-size:21px;font-weight:500;letter-spacing:-.7px;line-height:1.2}.wordmark b{font-weight:800}.wordmark small{display:block;font-size:8px;letter-spacing:2.6px;color:var(--muted);font-weight:650;margin-top:6px}.brand-mark{width:42px;height:42px}.header-right{display:flex;align-items:center;gap:28px}.edition{font-size:9px;font-weight:650;letter-spacing:1.6px;color:var(--muted);display:flex;gap:10px;align-items:center}.edition i,.eyebrow i,.home-bottom i{width:5px;height:5px;border-radius:50%;background:var(--mint);display:inline-block}.icon-button{display:grid;place-items:center;background:transparent;border:1px solid rgba(186,222,215,.22);border-radius:50%;width:44px;height:44px;color:var(--paper);transition:background .2s}.icon-button:hover{background:rgba(195,231,219,.12)}.icon-button svg{height:20px;width:20px}.stage{height:610px;position:relative;overflow:hidden;border:1px solid rgba(159,220,197,.26);border-radius:20px;background:#0b434d;isolation:isolate;touch-action:none;box-shadow:0 24px 60px -28px rgba(0,0,0,.5)}canvas{width:100%;height:100%;display:block;position:absolute;inset:0}.stage-vignette{position:absolute;inset:0;pointer-events:none;border-radius:inherit;box-shadow:inset 0 0 65px rgba(2,24,29,.17)}.screen{position:absolute;inset:0;z-index:5}.home-screen{background:linear-gradient(90deg,rgba(3,38,43,.9) 0%,rgba(3,38,43,.72) 31%,rgba(3,38,43,0) 66%)}.home-copy{position:absolute;left:5.5%;top:14%;max-width:51%}.eyebrow{font-size:9px;font-weight:750;letter-spacing:1.9px;color:var(--mint);display:flex;gap:10px;align-items:center;line-height:1.5}h1{font-family:"Arial Rounded MT Bold","Trebuchet MS","Segoe UI",sans-serif;font-size:clamp(52px,5.6vw,78px);font-weight:800;line-height:1.04;letter-spacing:-4.3px;margin:22px 0 21px;color:#f5f2df}h1 em{font-style:normal;color:var(--mint)}.home-copy>p{font-size:14px;color:#b7cfcb;line-height:1.9;margin:0 0 26px}.home-actions{display:flex;gap:12px;align-items:center}.primary,.secondary{display:flex;align-items:center;justify-content:center;gap:25px;min-height:48px;border-radius:7px;padding:14px 21px;font-size:12px;font-weight:750;letter-spacing:.1px;transition:background .2s,transform .2s;border:1px solid transparent}.primary{background:var(--amber);color:#323323;box-shadow:0 4px 0 rgba(9,30,32,.12)}.primary:hover{background:#ffd3a5;transform:translateY(-1px)}.primary:active{transform:translateY(1px)}.primary span,.secondary span{font-size:19px;font-weight:500;line-height:12px}.secondary{color:var(--paper);background:rgba(4,38,43,.2);border-color:rgba(177,221,209,.3);gap:15px}.secondary:hover{background:rgba(155,221,201,.15)}.start-hint{display:flex;align-items:center;gap:9px;margin-top:21px;font-size:10px;color:#a8c6c4}kbd{font:600 9px "Segoe UI",sans-serif;letter-spacing:.6px;border:1px solid rgba(176,216,204,.3);border-bottom-width:2px;border-radius:4px;padding:3px 6px;color:#c2d7ce;white-space:nowrap}.hero-caption{position:absolute;left:58%;bottom:19%;transform:rotate(-3deg);display:flex;flex-direction:column;gap:8px}.hero-caption span{font-size:8px;letter-spacing:1.5px;color:#a1d5cc}.hero-caption strong{font-size:13px;font-weight:550;letter-spacing:.3px;color:#d8e7d4}.hero-caption:before{content:"";position:absolute;left:28px;top:-37px;width:25px;height:25px;border-left:1px solid rgba(167,218,197,.65);border-bottom:1px solid rgba(167,218,197,.65);border-radius:0 0 0 18px;transform:rotate(-15deg)}.home-bottom{position:absolute;left:5.5%;right:5.5%;bottom:29px;display:flex;justify-content:space-between;gap:12px;font-size:8px;font-weight:650;letter-spacing:1.5px;color:#b7d7cf}.home-bottom span:first-child{display:flex;align-items:center;gap:9px}.home-bottom b{margin-left:10px;color:var(--amber);font-size:14px}.hud{position:absolute;left:28px;right:24px;top:22px;display:flex;align-items:flex-start;justify-content:space-between;z-index:3;pointer-events:none}.hud button{pointer-events:auto;background:rgba(5,38,43,.55)}.scoreboard{display:flex;align-items:center;gap:20px;background:rgba(5,33,40,.76);border:1px solid var(--line);border-radius:10px;padding:13px 20px;backdrop-filter:blur(10px)}.scoreboard>div{display:flex;flex-direction:column;gap:4px}.label{font-size:8px;letter-spacing:1.6px;color:#bbd1c7;font-weight:650}.scoreboard strong{font-size:30px;letter-spacing:-1px;line-height:1.1;font-variant-numeric:tabular-nums}.scoreboard .record strong{font-size:21px;color:#a8c8bc}.score-rule{height:31px;width:1px;background:var(--line)}.objective{position:absolute;bottom:22px;left:28px;z-index:3;padding:11px 15px;background:rgba(5,33,40,.74);border:1px solid var(--line);border-radius:8px;display:grid;grid-template-columns:auto auto;gap:7px 16px;backdrop-filter:blur(8px);pointer-events:none}.objective>span{font-size:8px;letter-spacing:1.5px;color:var(--mint);font-weight:750}.objective small{font-size:10px;grid-column:1/-1;color:#b5cec5}.route-dots{display:flex;gap:5px;align-items:center}.route-dots i{width:6px;height:6px;border:1px solid #7ea89a;border-radius:50%}.route-dots i.filled{background:var(--amber);border-color:var(--amber)}.boss-hud{position:absolute;top:27px;left:50%;transform:translateX(-50%);width:265px;z-index:3;background:rgba(31,28,43,.85);padding:12px 15px;border:1px solid rgba(244,120,121,.3);border-radius:10px;pointer-events:none}.boss-id{display:flex;align-items:center;gap:9px}.boss-dot{width:7px;height:7px;background:#ff827f;border-radius:2px;transform:rotate(45deg)}.boss-id>span:nth-child(2){display:flex;align-items:center;gap:8px}.boss-id strong{font-size:14px;letter-spacing:1.5px}.boss-id small{font-size:7px;color:#efa7a3;letter-spacing:1px}.boss-clock{margin-left:auto;font-size:13px;font-variant-numeric:tabular-nums;color:#ffcec4}.boss-meter{height:4px;background:rgba(255,154,145,.15);margin-top:10px;border-radius:3px;overflow:hidden}.boss-meter i{display:block;width:0;height:100%;background:#ff9c8d}.boss-hud p{font-size:9px;color:#dec1be;margin:8px 0 0}.event-banner{pointer-events:none;position:absolute;top:34%;left:0;right:0;text-align:center;z-index:4;background:linear-gradient(90deg,transparent,rgba(34,20,38,.86),transparent);padding:23px 15px;animation:banner-in .35s ease-out}.event-banner>span{font-size:9px;letter-spacing:3px;color:#ffb9a4;font-weight:750;display:block}.event-banner strong{font-size:clamp(28px,4vw,46px);font-weight:800;letter-spacing:-1.3px;display:block;margin:8px 0;color:#fff0dc}.event-banner p{margin:0;color:#efc7b9;font-size:12px;line-height:1.5}.event-banner.victory{background:linear-gradient(90deg,transparent,rgba(8,48,47,.91),transparent)}.event-banner.victory>span{color:var(--mint)}.event-banner.victory p{color:#c1e9d0}.play-tip{position:absolute;left:50%;bottom:29px;transform:translateX(-50%);z-index:2;font-size:8px;letter-spacing:1.4px;color:#c9e7d5;white-space:nowrap;pointer-events:none;display:flex;align-items:center;gap:8px}.play-tip span{opacity:.4;margin:0 3px}.toast{position:absolute;top:125px;left:50%;transform:translateX(-50%);font-size:11px;white-space:nowrap;border:1px solid #86c8a755;border-radius:30px;color:var(--mint);background:#082f37e8;padding:9px 16px;z-index:4}.modal-screen{background:rgba(3,24,31,.55);backdrop-filter:blur(9px);display:grid;place-items:center;padding:22px}.modal-card{width:360px;max-width:100%;text-align:center;background:linear-gradient(145deg,#173d43f5,#092931fa);padding:34px 30px 24px;border:1px solid #709e934d;border-radius:17px;box-shadow:0 15px 60px #001e2766}.modal-card .eyebrow{justify-content:center;font-size:8px}.modal-card h2{font-size:30px;line-height:1.1;letter-spacing:-1.1px;margin:17px 0 14px;font-weight:800}.modal-card>p{font-size:12px;line-height:1.7;color:#b1cac3;margin:0 0 19px}.modal-card .primary{width:100%;margin-top:19px}.text-button{border:0;background:transparent;color:#c1d6cd;font-size:11px;padding:13px;min-height:44px}.text-button:hover{color:var(--amber)}.modal-card>small{display:block;font-size:9px;color:#8caba5;margin-top:7px}.end-stats{display:grid;grid-template-columns:1fr 1fr;border-block:1px solid var(--line);padding:18px 0;margin:18px 0}.end-stats>div{display:flex;flex-direction:column;gap:7px}.end-stats>div+div{border-left:1px solid var(--line)}.end-stats span{font-size:8px;letter-spacing:1.5px;color:#9dbaaf}.end-stats strong{font-size:35px;color:var(--amber);line-height:1;font-variant-numeric:tabular-nums}.end-stats>div+div strong{color:#b5d8c9}.modal-card .end-note{font-size:11px;line-height:1.5;margin-bottom:0;color:#b2cfc0}.field-guide{display:grid;grid-template-columns:1.08fr 1.1fr 1.1fr 1.23fr;gap:26px;padding:36px 0 31px;border-bottom:1px solid var(--line)}.guide-intro .eyebrow{font-size:8px;letter-spacing:1.7px;color:#8aacaa}.guide-intro h2{font-size:19px;font-weight:650;letter-spacing:-.5px;margin:10px 0 0;line-height:1.4}.guide-item{display:flex;align-items:flex-start;gap:14px;padding-top:4px}.guide-number{font-size:9px;font-weight:700;color:#6c9f95;line-height:2}.guide-item h3{font-size:12px;font-weight:650;margin:0 0 10px;line-height:1.5;color:#dfebde}.guide-item p{font-size:11px;line-height:1.85;color:#92b4ad;margin:0}.guide-item b{color:#bfdccb;font-weight:600}.guide-item kbd{font-size:8px;padding:1px 4px;letter-spacing:0}.boss-guide .guide-number{color:#ee9b82}footer{display:flex;justify-content:space-between;gap:15px;color:#72958f;font-size:7px;letter-spacing:1.4px;padding:22px 0 25px;font-weight:650}.footer-dot{padding:0 10px;color:#456b66}.fan-note{text-transform:none;letter-spacing:.2px;font-weight:400;font-size:9px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}@keyframes banner-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@media(min-width:1500px){.app{padding:0 20px}.stage{height:650px}.masthead{height:114px}}
+@media(max-width:1000px){.app{padding:0 25px}.stage{height:590px}.home-copy{top:15%;left:5%}h1{font-size:61px;letter-spacing:-3.3px}.home-copy>p{font-size:12px}.home-actions{gap:8px}.primary,.secondary{font-size:11px;padding-inline:16px;gap:13px}.field-guide{gap:20px;grid-template-columns:1fr 1fr 1fr}.guide-intro{display:none}.hero-caption{left:61%;bottom:23%}.hero-caption strong{font-size:11px}.hero-caption span{font-size:7px}.boss-hud{left:auto;right:86px;transform:none;top:24px;width:245px}}
+@media(max-width:650px){.app{padding:0 12px}.masthead{height:78px;gap:12px}.wordmark{font-size:19px;gap:10px}.brand-mark{width:36px;height:36px}.wordmark small{font-size:7px;letter-spacing:2px;margin-top:5px}.edition{display:none}.header-right{gap:0}.icon-button{width:40px;height:40px}.stage{height:660px;border-radius:14px}.home-screen{background:linear-gradient(180deg,rgba(5,39,44,.38),rgba(5,39,44,0) 39%,rgba(5,34,40,.85) 64%,rgba(5,34,40,.95))}.home-copy{left:25px;right:25px;top:auto;bottom:66px;max-width:none}.home-copy>.eyebrow{font-size:7px;letter-spacing:1.3px;gap:8px}h1{font-size:51px;line-height:1.02;letter-spacing:-2.7px;margin:14px 0}h1 br{display:none}h1 em{display:block}.home-copy>p{font-size:12px;line-height:1.75;margin:0 0 20px}.desktop-br{display:none}.home-actions{gap:10px}.home-actions .primary{flex:1}.primary,.secondary{font-size:11px;min-height:47px;padding:13px 16px;gap:10px}.start-hint{font-size:9px;margin-top:17px}.hero-caption{left:47%;bottom:auto;top:35%;transform:rotate(-4deg)}.hero-caption span{font-size:6px;letter-spacing:1px}.hero-caption strong{font-size:10px;max-width:160px}.hero-caption:before{left:8px;top:-33px;width:19px;height:23px}.home-bottom{left:25px;right:25px;bottom:25px;font-size:7px;letter-spacing:1px}.home-bottom span:first-child{display:none}.home-bottom span:last-child{width:100%;border-top:1px solid #a0c7ba33;padding-top:15px}.home-bottom b{float:right}.hud{left:13px;right:13px;top:13px}.scoreboard{padding:9px 12px;gap:12px;border-radius:8px}.label{font-size:7px;letter-spacing:1px}.scoreboard strong{font-size:26px}.scoreboard .record strong{font-size:19px}.score-rule{height:25px}.objective{left:13px;bottom:14px;padding:9px 11px;gap:6px 12px}.objective>span{font-size:7px}.objective small{font-size:9px}.play-tip{font-size:7px;letter-spacing:.7px;bottom:94px;gap:6px}.play-tip kbd{font-size:7px}.boss-hud{top:94px;left:50%;right:auto;transform:translateX(-50%);width:240px;padding:10px 13px}.boss-id strong{font-size:12px}.boss-hud p{font-size:8px}.event-banner{top:39%;padding:22px 15px}.event-banner>span{font-size:8px;letter-spacing:2px}.event-banner strong{font-size:32px}.event-banner p{font-size:10px;max-width:280px;margin:auto}.toast{top:170px;font-size:10px}.field-guide{padding:25px 8px 22px;grid-template-columns:1fr;gap:19px}.guide-item{padding:0;gap:14px}.guide-number{font-size:9px}.guide-item h3{font-size:12px;margin:0 0 4px}.guide-item p{font-size:11px}.guide-intro{display:none}footer{padding:18px 8px 23px;flex-direction:column;gap:10px;font-size:6px;letter-spacing:1px}.fan-note{font-size:8px}.modal-card{padding:29px 22px 19px}.modal-card h2{font-size:29px}.stage.is-playing{height:min(660px,calc(100svh - 96px));min-height:440px}}
+@media(max-width:370px){.home-copy{left:20px;right:20px}h1{font-size:46px}.home-actions{gap:6px}.primary,.secondary{padding-inline:11px;font-size:10px}.stage{height:650px}.home-copy>p{font-size:11px}}
+@media(max-height:550px) and (min-width:651px){.masthead{height:64px}.stage{height:390px}.home-copy{top:10%}.home-copy h1{font-size:44px;margin:12px 0}.home-copy>p{font-size:11px;margin-bottom:15px;line-height:1.6}.start-hint{margin-top:12px}.home-bottom{bottom:16px}.home-actions button{min-height:40px;padding-block:10px}.hero-caption{bottom:24%}.modal-card{padding:22px}.modal-card h2{font-size:25px;margin:12px 0}.end-stats{padding:12px 0;margin:12px 0}.end-stats strong{font-size:28px}.modal-card>p{margin-bottom:10px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
 
-    * { box-sizing: border-box; }
-
-    html, body {
-      margin: 0;
-      min-height: 100%;
-      background:
-        radial-gradient(circle at top, #0b5062 0%, #053242 38%, #031f2a 75%);
-      color: var(--text);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-
-    body {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 22px;
-    }
-
-    .app {
-      width: min(1100px, 100%);
-    }
-
-    .topbar {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 18px;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
-    }
-
-    h1 {
-      margin: 0 0 4px;
-      font-size: clamp(1.65rem, 4vw, 2.5rem);
-      letter-spacing: -.03em;
-    }
-
-    .subtitle {
-      margin: 0;
-      color: var(--muted);
-      font-size: .96rem;
-    }
-
-    .stats {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .stat {
-      min-width: 88px;
-      border: 1px solid var(--border);
-      background: var(--panel2);
-      backdrop-filter: blur(10px);
-      border-radius: 14px;
-      padding: 9px 12px;
-      text-align: center;
-    }
-
-    .stat small {
-      display: block;
-      color: var(--muted);
-      font-size: .72rem;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-    }
-
-    .stat strong {
-      font-size: 1.25rem;
-    }
-
-    button {
-      appearance: none;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.08);
-      color: var(--text);
-      border-radius: 12px;
-      min-height: 44px;
-      padding: 10px 15px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: transform .15s ease, background .15s ease;
-    }
-
-    button:hover { background: rgba(255,255,255,.13); }
-    button:active { transform: translateY(1px) scale(.99); }
-    button:focus-visible {
-      outline: 3px solid rgba(255, 209, 102, .5);
-      outline-offset: 2px;
-    }
-
-    .game-shell {
-      position: relative;
-      overflow: hidden;
-      border-radius: 24px;
-      border: 1px solid var(--border);
-      box-shadow: 0 24px 70px rgba(0,0,0,.28);
-      background: #0c7791;
-      min-height: 520px;
-      user-select: none;
-      touch-action: manipulation;
-    }
-
-    canvas {
-      display: block;
-      width: 100%;
-      height: 520px;
-    }
-
-    .overlay {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      padding: 24px;
-      background: rgba(0, 20, 28, .22);
-    }
-
-    .overlay.hidden { display: none; }
-
-    .card {
-      width: min(470px, 100%);
-      background: rgba(3, 31, 42, .88);
-      border: 1px solid rgba(255,255,255,.16);
-      border-radius: 22px;
-      padding: 24px;
-      text-align: center;
-      box-shadow: 0 20px 60px rgba(0,0,0,.25);
-      backdrop-filter: blur(14px);
-    }
-
-    .fish-mark {
-      width: 74px;
-      height: 54px;
-      margin: 0 auto 12px;
-      position: relative;
-    }
-
-    .fish-mark::before {
-      content: "";
-      position: absolute;
-      inset: 8px 9px 8px 6px;
-      border-radius: 50% 56% 52% 50%;
-      background: var(--accent-2);
-      box-shadow: inset -7px -6px 0 rgba(180, 88, 32, .18);
-    }
-
-    .fish-mark::after {
-      content: "";
-      position: absolute;
-      left: -5px;
-      top: 15px;
-      width: 24px;
-      height: 24px;
-      background: #df7c37;
-      clip-path: polygon(100% 50%, 0 0, 16% 50%, 0 100%);
-    }
-
-    .card h2 {
-      margin: 6px 0 8px;
-      font-size: 1.5rem;
-    }
-
-    .card p {
-      margin: 0 0 18px;
-      color: var(--muted);
-      line-height: 1.55;
-    }
-
-    .primary {
-      background: linear-gradient(180deg, #ffe08b, #ffc84d);
-      color: #4a2f00;
-      border-color: rgba(255,255,255,.34);
-      font-size: 1rem;
-      padding-inline: 22px;
-    }
-
-    .help {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 12px;
-      margin-top: 14px;
-    }
-
-    .help > div {
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.05);
-      border-radius: 14px;
-      padding: 10px 12px;
-      color: var(--muted);
-      font-size: .88rem;
-      text-align: center;
-    }
-
-    .footer {
-      color: #7fbcca;
-      font-size: .78rem;
-      text-align: center;
-      margin-top: 12px;
-    }
-
-    @media (max-width: 680px) {
-      body { padding: 10px; align-items: flex-start; }
-      .game-shell { min-height: 470px; border-radius: 18px; }
-      canvas { height: 470px; }
-      .help { grid-template-columns: 1fr; gap: 8px; }
-      .stat { min-width: 76px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      button { transition: none; }
-    }
-  </style>
+</style>
 </head>
 <body>
-  <main class="app">
-    <section class="topbar">
-      <div>
-        <h1>Splashy Karp</h1>
-        <p class="subtitle">A reef-running, bubble-grabbing sea arcade game.</p>
-      </div>
+<main class="app">
+  <header class="masthead">
+    <a class="wordmark" href="#" id="homeLink" aria-label="Splashy Karp home">
+      <svg class="brand-mark" viewBox="0 0 44 44" fill="none" aria-hidden="true"><rect x="1" y="1" width="42" height="42" rx="14" fill="#f5ab65"/><path d="M12 23L7 17V29L12 25C17 34 32 30 34 22C30 13 17 13 12 23Z" fill="#7e3a30"/><circle cx="27" cy="21" r="2.3" fill="#ffe5bd"/><path d="M17 17L21 9L25 17" fill="#7e3a30"/></svg>
+      <span>Splashy <b>Karp</b><small>THE CBK EDITION</small></span>
+    </a>
+    <div class="header-right"><span class="edition"><i></i> ONE LITTLE FISH. ONE BIG OCEAN.</span><button class="icon-button" id="soundBtn" aria-label="Turn sound on" aria-pressed="false" title="Sound (M)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M10 5L5 9H2V15H5L10 19Z"/><path id="soundWaves" d="M15 9L21 15M21 9L15 15"/></svg></button></div>
+  </header>
 
-      <div class="stats" aria-label="Game statistics">
-        <div class="stat"><small>Score</small><strong id="score">0</strong></div>
-        <div class="stat"><small>Best</small><strong id="best">0</strong></div>
-        <button id="pauseBtn" type="button">Pause</button>
-      </div>
-    </section>
+  <section class="stage" id="game" tabindex="0" role="application" aria-label="Splashy Karp. Tap, click, Space or Arrow Up to swim. P or Escape to pause.">
+    <canvas id="canvas" aria-label="Underwater arcade game. Use the buttons and keyboard controls to play.">Your browser needs Canvas support to play Splashy Karp.</canvas>
+    <div class="stage-vignette" aria-hidden="true"></div>
+    <div class="hud" id="hud" hidden>
+      <div class="scoreboard"><div><span class="label" id="scoreLabel">SCORE</span><strong id="score">00</strong></div><span class="score-rule"></span><div class="record"><span class="label">PERSONAL BEST</span><strong id="best">00</strong></div></div>
+      <button id="pauseBtn" class="icon-button pause-button" aria-label="Pause game" title="Pause (P)"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg></button>
+    </div>
+    <div class="objective" id="objective" hidden><span id="objectiveText">THE SHALLOWS</span><div class="route-dots" id="routeDots" aria-hidden="true"><i></i><i></i><i></i><i></i></div><small id="objectiveSub">4 gates to uncharted water</small></div>
+    <div class="boss-hud" id="bossHud" hidden><div class="boss-id"><span class="boss-dot"></span><span><strong>CBK</strong><small>THE CRIMSON CURRENT</small></span><span class="boss-clock" id="bossClock">18s</span></div><div class="boss-meter" role="progressbar" id="bossMeter" aria-label="Boss encounter survival progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="bossFill"></i></div><p id="bossHint">Move out of the marked current.</p></div>
+    <div class="event-banner" id="eventBanner" hidden aria-live="polite"><span id="eventEyebrow">SOMETHING STIRS BELOW</span><strong id="eventTitle">The water runs red.</strong><p id="eventText">CBK is approaching. Stay out of the red current.</p></div>
 
-    
-    <section
-      id="game"
-      class="game-shell"
-      tabindex="0"
-      role="application"
-      aria-label="Splashy Karp game. Press Space or Arrow Up to swim upward."
-    >
-      <canvas id="canvas"></canvas>
+    <div class="screen home-screen" id="homeScreen">
+      <div class="home-copy"><span class="eyebrow"><i></i> A REEF-RUNNING ARCADE ADVENTURE</span><h1>Small fish.<br><em>Big trouble.</em></h1><p>A splash of courage. An ocean of trouble.<br>Find your rhythm, thread the coral, and<br class="desktop-br"> meet what’s waiting in the deep.</p><div class="home-actions"><button class="primary" id="startBtn">Start swimming <span aria-hidden="true">→</span></button><button class="secondary" id="practiceBtn">Boss practice <span aria-hidden="true">↗</span></button></div><div class="start-hint"><kbd>SPACE</kbd><span>or tap anywhere to swim</span></div></div>
+      <div class="hero-caption" aria-hidden="true"><span>MEET YOUR VERY UNLIKELY HERO</span><strong>Karp. All heart. Zero plan.</strong></div>
+      <div class="home-bottom"><span><i></i> EXPLORE THE SHALLOWS</span><span>CBK APPEARS AFTER 4 GATES <b>↗</b></span></div>
+    </div>
 
-      <div id="overlay" class="overlay">
-        <div class="card">
-          <div class="fish-mark" aria-hidden="true"></div>
-          <h2 id="overlayTitle">Ready to make a splash?</h2>
-          <p id="overlayText">
-            Tap, click, or press <strong>Space</strong> to swim upward.
-            Pass coral arches for points and grab bubbles for bonus points.
-          </p>
-          <button id="startBtn" class="primary" type="button">Start swimming</button>
-        </div>
-      </div>
-    </section>
+    <div class="screen modal-screen" id="pauseScreen" hidden><div class="modal-card"><span class="eyebrow">TAKE A BREATHER</span><h2>Just floating.</h2><p>The reef can wait. Pick up exactly where you left off.</p><button class="primary" id="resumeBtn">Keep swimming <span aria-hidden="true">→</span></button><button class="text-button" id="pauseHomeBtn">Back to shore</button><small>Space, P or Escape to resume</small></div></div>
+    <div class="screen modal-screen" id="endScreen" hidden><div class="modal-card"><span class="eyebrow" id="endEyebrow">A GOOD LITTLE SPLASH</span><h2 id="endTitle">Back to the surface.</h2><p id="endMessage">The coral got a little too close.</p><div class="end-stats"><div><span id="endScoreLabel">YOUR SCORE</span><strong id="endScore">00</strong></div><div><span id="endBestLabel">PERSONAL BEST</span><strong id="endBest">00</strong></div></div><p class="end-note" id="endNote">You’re one swim closer to finding your rhythm.</p><button class="primary" id="retryBtn">Swim again <span aria-hidden="true">↗</span></button><button class="text-button" id="endHomeBtn">Back to shore</button></div></div>
+    <div class="toast" id="toast" hidden></div>
+    <div class="play-tip" id="playTip" hidden><kbd>SPACE</kbd> / TAP TO SWIM <span>•</span> RELEASE TO SINK</div>
+  </section>
 
-    <section class="help" aria-label="Controls">
-      <div>🐟 Tap / click / Space = swim</div>
-      <div>🫧 Bubble = +3 points</div>
-      <div>🪸 Coral gate = +1 point</div>
-    </section>
+  <section class="field-guide" aria-label="How to play">
+    <div class="guide-intro"><span class="eyebrow">A QUICK FIELD GUIDE</span><h2>Go with the flow.<br>Mostly.</h2></div>
+    <div class="guide-item"><span class="guide-number">01</span><div><h3>Find your rhythm</h3><p>Tap, click or press <kbd>Space</kbd> to swim up. Let go to sink.</p></div></div>
+    <div class="guide-item"><span class="guide-number">02</span><div><h3>Take the scenic route</h3><p>Clear coral for <b>+1</b>. Catch glowing bubbles for <b>+3</b>.</p></div></div>
+    <div class="guide-item boss-guide"><span class="guide-number">03</span><div><h3>Don’t wake the current</h3><p>Four gates in, CBK arrives. Dodge the red warnings. Survive for <b>+25</b>.</p></div></div>
+  </section>
+  <footer><span>MADE FOR ONE MORE TRY.</span><span>CBK · A SPLASHY KARP ADVENTURE <span class="footer-dot">/</span> <span class="fan-note">Unofficial fan-made game.</span></span></footer>
+  <p class="sr-only" id="announcer" role="status" aria-live="polite"></p>
+</main>
+<script>
+(() => {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const canvas = $('canvas'), ctx = canvas.getContext('2d'), stage = $('game');
+  const TAU = Math.PI * 2, H = 600, STEP = 1 / 120;
+  const BOSS_DURATION = 19, BOSS_GATE = 4;
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const mix = (a, b, t) => a + (b - a) * t;
+  const ease = t => { t = clamp(t, 0, 1); return t * t * (3 - 2 * t); };
+  const rng = (a, b) => a + Math.random() * (b - a);
+  const pad = n => String(n).padStart(2, '0');
+  let W = 1200, scale = 1, dpr = 1, mobile = false;
+  let state = 'home', phase = 'reef', practice = false, score = 0, best = 0;
+  let gatesPassed = 0, bubbleCount = 0, bossCleared = false, newBest = false;
+  let runTime = 0, phaseTime = 0, artTime = 0, gateTimer = 0, spawnCount = 0;
+  let lastFrame = 0, accumulator = 0, toastUntil = 0, deathAt = 0;
+  let bossTint = 0, bossVisibility = 0, flash = 0;
+  let gates = [], bubbles = [], particles = [], floaters = [], shots = [], attacks = [];
+  let fish = {x:210, y:300, vy:0, r:15, rotation:0, kick:0};
+  let audioContext = null, soundEnabled = false;
+  let previousUI = '';
 
-    <p class="footer">Original fan-made arcade game. No external assets or libraries required.</p>
-  </main>
+  try { const stored = Number(localStorage.getItem('splashy-karp-best')); best = Number.isFinite(stored) && stored >= 0 ? Math.floor(stored) : 0; } catch (_) {}
+  $('best').textContent = pad(best);
 
-  <script>
-    (() => {
-      const canvas = document.getElementById("canvas");
-      const ctx = canvas.getContext("2d");
-      const game = document.getElementById("game");
-      const overlay = document.getElementById("overlay");
-      const startBtn = document.getElementById("startBtn");
-      const pauseBtn = document.getElementById("pauseBtn");
-      const scoreEl = document.getElementById("score");
-      const bestEl = document.getElementById("best");
-      const overlayTitle = document.getElementById("overlayTitle");
-      const overlayText = document.getElementById("overlayText");
+  function announce(text) { $('announcer').textContent = text; }
+  function persistBest() {
+    if (practice || score <= best) return;
+    best = score; newBest = true;
+    try { localStorage.setItem('splashy-karp-best', String(best)); } catch (_) {}
+    $('best').textContent = pad(best);
+  }
+  function tone(freq, duration, type = 'sine', volume = .055, endFreq = freq, delay = 0) {
+    if (!soundEnabled) return;
+    try {
+      if (!audioContext) audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioContext.state === 'suspended') audioContext.resume().catch(() => {});
+      const t = audioContext.currentTime + delay;
+      const oscillator = audioContext.createOscillator(), gain = audioContext.createGain();
+      oscillator.type = type; oscillator.frequency.setValueAtTime(freq, t);
+      oscillator.frequency.exponentialRampToValueAtTime(Math.max(endFreq, 20), t + duration);
+      gain.gain.setValueAtTime(.0001, t); gain.gain.exponentialRampToValueAtTime(volume, t + .015);
+      gain.gain.exponentialRampToValueAtTime(.0001, t + duration);
+      oscillator.connect(gain); gain.connect(audioContext.destination);
+      oscillator.start(t); oscillator.stop(t + duration + .03);
+      oscillator.onended = () => { oscillator.disconnect(); gain.disconnect(); };
+    } catch (_) { /* Audio is optional; the game remains playable. */ }
+  }
+  function toggleSound() {
+    soundEnabled = !soundEnabled;
+    $('soundBtn').setAttribute('aria-pressed', String(soundEnabled));
+    $('soundBtn').setAttribute('aria-label', soundEnabled ? 'Turn sound off' : 'Turn sound on');
+    $('soundWaves').setAttribute('d', soundEnabled ? 'M14 8Q18 12 14 16M17 5Q24 12 17 19' : 'M15 9L21 15M21 9L15 15');
+    if (soundEnabled) tone(520, .18, 'sine', .05, 820);
+  }
 
-      let width = 900;
-      let height = 520;
-      let dpr = 1;
-      let running = false;
-      let paused = false;
-      let dead = false;
-      let score = 0;
-      let best = Number(localStorage.getItem("splashy-karp-best") || 0);
-      let last = 0;
-      let raf = 0;
-      let time = 0;
-      let gateTimer = 0;
-      let bubbleTimer = 0;
+  function resize() {
+    const rect = canvas.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
+    const oldW = W;
+    scale = rect.height / H; W = rect.width / scale;
+    mobile = rect.width <= 650;
+    dpr = Math.min(devicePixelRatio || 1, 2);
+    canvas.width = Math.round(rect.width * dpr); canvas.height = Math.round(rect.height * dpr);
+    const oldX = fish.x;
+    fish.x = Math.min(210, W * .23);
+    if (state !== 'home' && Math.abs(W - oldW) > 2) {
+      // Keep each obstacle's time to contact stable when the viewport changes.
+      const ratio = speedFor(W) / speedFor(oldW);
+      for (const item of [...gates, ...bubbles, ...shots]) item.x = fish.x + (item.x - oldX) * ratio;
+      for (const shot of shots) shot.vx *= ratio;
+    }
+    draw();
+  }
+  const speedFor = width => Math.min(207, Math.max(105, (width - Math.min(210, width * .23) + 65) / 2.5));
+  const speed = () => speedFor(W) * (bossCleared ? 1.07 : 1);
 
-      let fish = {};
-      let gates = [];
-      let bubbles = [];
-      let particles = [];
-      let tinyFish = [];
+  function setScreens() {
+    $('homeScreen').hidden = state !== 'home';
+    $('pauseScreen').hidden = state !== 'paused';
+    $('endScreen').hidden = state !== 'dead';
+    $('hud').hidden = state === 'home';
+    $('pauseBtn').disabled = state !== 'playing';
+    stage.classList.toggle('is-playing', state !== 'home');
+    previousUI = '';
+    syncUI();
+  }
+  function start(isPractice = false) {
+    practice = isPractice; state = 'playing'; phase = isPractice ? 'warning' : 'reef';
+    score = 0; gatesPassed = 0; bubbleCount = 0; bossCleared = false; newBest = false;
+    runTime = 0; phaseTime = 0; gateTimer = .7; spawnCount = 0; bossTint = 0;
+    gates = []; bubbles = []; particles = []; floaters = []; shots = []; attacks = [];
+    bossVisibility = 0; flash = 0; toastUntil = 0; $('toast').hidden = true;
+    fish = {x:Math.min(210, W * .23), y:H * .49, vy:0, r:15, rotation:0, kick:0};
+    $('scoreLabel').textContent = practice ? 'PRACTICE' : 'SCORE';
+    $('score').textContent = '00'; $('best').textContent = pad(best);
+    lastFrame = performance.now(); accumulator = 0;
+    setScreens(); resize(); stage.focus({preventScroll:true});
+    swim();
+    announce(practice ? 'Boss practice. CBK is approaching. Dodge the red current for nineteen seconds.' : 'Swim started. Pass four coral gates to meet CBK.');
+    if (practice) bossWarningSound();
+  }
+  function home() {
+    persistBest(); state = 'home'; phase = 'reef'; bossTint = 0; bossVisibility = 0;
+    gates = []; bubbles = []; shots = []; particles = []; floaters = []; attacks = [];
+    $('toast').hidden = true;
+    setScreens(); resize(); $('startBtn').focus({preventScroll:true});
+  }
+  function swim() {
+    if (state !== 'playing') return;
+    fish.vy = -290; fish.kick = 1;
+    burst(fish.x - 26, fish.y + 4, '#bfe5d7', 5, 'bubble');
+    tone(350, .11, 'sine', .028, 650);
+  }
+  function togglePause(force = false) {
+    if (state === 'playing') {
+      state = 'paused'; setScreens(); $('resumeBtn').focus({preventScroll:true});
+      if (audioContext?.state === 'running') audioContext.suspend().catch(() => {});
+      announce('Paused.');
+    } else if (state === 'paused' && !force) {
+      state = 'playing'; lastFrame = performance.now(); accumulator = 0;
+      setScreens(); stage.focus({preventScroll:true});
+      if (soundEnabled && audioContext?.state === 'suspended') audioContext.resume().catch(() => {});
+      announce('Resumed.');
+    }
+  }
+  function end(reason = 'coral', practiceWin = false) {
+    if (state !== 'playing') return;
+    state = 'dead'; deathAt = performance.now();
+    persistBest();
+    const bossHit = reason === 'current';
+    $('endEyebrow').textContent = practiceWin ? 'CURRENT CONQUERED' : practice ? 'BOSS PRACTICE' : newBest ? 'A NEW PERSONAL BEST' : bossCleared ? 'YOU MET THE DEEP' : 'A GOOD LITTLE SPLASH';
+    $('endTitle').textContent = practiceWin ? 'Small fish. Big win.' : bossHit ? 'Quite the current.' : 'Back to the surface.';
+    $('endMessage').textContent = practiceWin ? 'You outlasted CBK. Now try the full reef run.' : bossHit ? 'CBK caught you in a crimson surge. Leave the red warning band before it fires.' : reason === 'boundary' ? 'A little too close to the surface or seabed. Keep your swim between the edges.' : 'The coral got a little too close. Aim for the open water between the tips.';
+    $('endScoreLabel').textContent = practice ? 'SURVIVED' : 'YOUR SCORE';
+    $('endScore').textContent = practice ? `${Math.min(19, Math.floor(phase === 'warning' ? 0 : phaseTime))}s` : pad(score);
+    $('endBestLabel').textContent = practice ? 'TARGET' : 'PERSONAL BEST';
+    $('endBest').textContent = practice ? '19s' : pad(best);
+    $('endNote').textContent = practice ? 'Practice runs don’t change your personal best.' : bossCleared ? `CBK survived · ${gatesPassed} gates · ${bubbleCount} bubbles` : `${gatesPassed} of 4 gates to CBK. Find your rhythm, then find the deep.`;
+    $('retryBtn').innerHTML = practiceWin ? 'Dive into the reef <span aria-hidden="true">→</span>' : `${practice ? 'Try CBK again' : 'Swim again'} <span aria-hidden="true">↗</span>`;
+    $('retryBtn').dataset.practiceWin = String(practiceWin);
+    setScreens(); $('retryBtn').focus({preventScroll:true});
+    if (!practiceWin) { burst(fish.x, fish.y, '#ffbb92', 24); tone(190, .4, 'triangle', .065, 65); }
+    announce(practiceWin ? 'CBK survived. Practice complete.' : `Run finished. ${practice ? 'Practice' : 'Score ' + score}. ${$('endMessage').textContent}`);
+  }
 
-      bestEl.textContent = best;
+  function addScore(points, x, y) {
+    score += points; $('score').textContent = pad(score);
+    floaters.push({x, y, text:`+${points}`, t:0, color:points === 25 ? '#ffdcb0' : '#daf7d4'});
+  }
+  function burst(x, y, color, count = 10, type = 'spark') {
+    for (let i = 0; i < count; i++) particles.push({x,y,vx:rng(-75,65),vy:rng(-60,65),r:rng(1.5,4),life:rng(.35,.9),max:1,color,type});
+    if (particles.length > 180) particles.splice(0, particles.length - 180);
+  }
+  function spawnGate() {
+    const gap = bossCleared ? Math.max(193, 218 - (gatesPassed - 4) * 1.8) : 232;
+    const lastCy = gates.length ? gates[gates.length - 1].cy : H * .5;
+    const cy = clamp(lastCy + rng(-86, 86), gap / 2 + 70, H - gap / 2 - 70);
+    const gate = {x:W + 65, w:mobile ? 52 : 69, cy, gap, passed:false, seed:spawnCount++};
+    gates.push(gate);
+    if (spawnCount % 2 === 0 || bossCleared) bubbles.push({x:gate.x + gate.w / 2 + 105, y:cy, r:12, phase:spawnCount});
+  }
+  function circleRect(cx, cy, r, x, y, w, h) {
+    const nx = clamp(cx, x, x+w), ny = clamp(cy, y, y+h);
+    return (cx-nx)**2 + (cy-ny)**2 < r*r;
+  }
+  function beginWarning() {
+    phase = 'warning'; phaseTime = 0; gates = []; bubbles = []; shots = [];
+    bossWarningSound(); syncUI();
+    announce('Four gates cleared. CBK approaches. Dodge the marked red current.');
+  }
+  function bossWarningSound() {
+    tone(100,.6,'triangle',.05,70); tone(150,.65,'sine',.045,80,.2);
+  }
+  function beginBoss() {
+    phase = 'boss'; phaseTime = 0;
+    attacks = Array.from({length:6}, (_,i) => ({at:.6+i*2.7, y:null, fired:false, announced:false}));
+    syncUI(); announce('CBK encounter. Survive nineteen seconds. Move outside each red warning band.');
+  }
+  function bossWin() {
+    bossCleared = true; shots = []; attacks = []; burst(fish.x,fish.y,'#cef8ba',36);
+    addScore(25, fish.x+15,fish.y-30);
+    tone(440,.2,'sine',.06,440); tone(554,.2,'sine',.06,554,.14); tone(660,.35,'sine',.06,880,.28);
+    if (practice) { end('win',true); return; }
+    phase = 'victory'; phaseTime = 0;
+    announce('CBK survived. Twenty-five bonus points. The reef run continues.'); syncUI();
+  }
+  function update(dt) {
+    if (state !== 'playing') return;
+    runTime += dt; phaseTime += dt;
+    fish.vy = Math.min(420,fish.vy+720*dt); fish.y += fish.vy*dt;
+    fish.rotation = mix(fish.rotation,clamp(fish.vy/650,-.45,.65),Math.min(1,dt*10));
+    fish.kick = Math.max(0,fish.kick-dt*4);
+    const transition = phase === 'warning' || phase === 'victory';
+    if (transition) {
+      if (fish.y < 32) {fish.y=32;fish.vy=20;}
+      if (fish.y > H-42) {fish.y=H-42;fish.vy=-150;}
+    } else if (fish.y < 20 || fish.y > H-25) { end('boundary'); return; }
 
-      function resize() {
-        const rect = game.getBoundingClientRect();
-        width = Math.max(320, rect.width);
-        height = window.innerWidth <= 680 ? 470 : 520;
-        dpr = Math.min(window.devicePixelRatio || 1, 2);
-
-        canvas.width = width * dpr;
-        canvas.height = height * dpr;
-        canvas.style.height = height + "px";
-
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        draw();
-      }
-
-      function reset() {
-        score = 0;
-        scoreEl.textContent = score;
-        running = true;
-        paused = false;
-        dead = false;
-        pauseBtn.textContent = "Pause";
-        time = 0;
-        gateTimer = 0.2;
-        bubbleTimer = 1.2;
-        gates = [];
-        bubbles = [];
-        particles = [];
-        tinyFish = Array.from({length: 7}, (_, i) => ({
-          x: Math.random() * width,
-          y: 50 + Math.random() * (height - 140),
-          s: .55 + Math.random() * .65,
-          phase: Math.random() * Math.PI * 2
-        }));
-        fish = {
-          x: Math.min(150, width * .24),
-          y: height * .5,
-          vy: 0,
-          r: 21,
-          rotation: 0
-        };
-      }
-
-      function start() {
-        cancelAnimationFrame(raf);
-        reset();
-        overlay.classList.add("hidden");
-        last = performance.now();
-        game.focus();
-        raf = requestAnimationFrame(loop);
-      }
-
-      function flap() {
-        if (dead) {
-          start();
-          return;
-        }
-        if (!running || paused) return;
-        fish.vy = -325;
-
-        for (let i = 0; i < 6; i++) {
-          particles.push({
-            x: fish.x - 18,
-            y: fish.y + (Math.random() - .5) * 15,
-            r: 2 + Math.random() * 4,
-            a: 1,
-            vx: -35 - Math.random() * 60,
-            vy: (Math.random() - .5) * 45
-          });
-        }
-      }
-
-      function endGame() {
-        running = false;
-        dead = true;
-        best = Math.max(best, score);
-        bestEl.textContent = best;
-        localStorage.setItem("splashy-karp-best", String(best));
-
-        overlayTitle.textContent = "Reef crash!";
-        overlayText.innerHTML =
-          `You scored <strong>${score}</strong>. Tap, press Space, or use the button to dive back in.`;
-        startBtn.textContent = "Swim again";
-        overlay.classList.remove("hidden");
-      }
-
-      function spawnGate() {
-        const gap = Math.max(128, Math.min(170, height * .34));
-        const margin = 60;
-        const centerY =
-          margin + gap / 2 + Math.random() * (height - margin * 2 - gap);
-
-        gates.push({
-          x: width + 60,
-          w: 68,
-          cy: centerY,
-          gap,
-          passed: false
-        });
-      }
-
-      function spawnBubble() {
-        bubbles.push({
-          x: width + 30,
-          y: 70 + Math.random() * (height - 150),
-          r: 9 + Math.random() * 4,
-          phase: Math.random() * Math.PI * 2
-        });
-      }
-
-      function circleRect(cx, cy, cr, x, y, w, h) {
-        const nx = Math.max(x, Math.min(cx, x + w));
-        const ny = Math.max(y, Math.min(cy, y + h));
-        return (cx - nx) ** 2 + (cy - ny) ** 2 < cr ** 2;
-      }
-
-      function update(dt) {
-        time += dt;
-        gateTimer -= dt;
-        bubbleTimer -= dt;
-
-        if (gateTimer <= 0) {
-          spawnGate();
-          gateTimer = 1.62;
-        }
-
-        if (bubbleTimer <= 0) {
-          spawnBubble();
-          bubbleTimer = 2.1 + Math.random() * 1.8;
-        }
-
-        fish.vy += 810 * dt;
-        fish.y += fish.vy * dt;
-        fish.rotation = Math.max(-.5, Math.min(.82, fish.vy / 520));
-
-        const speed = 195;
-
-        for (const f of tinyFish) {
-          f.x -= (18 + 14 * f.s) * dt;
-          if (f.x < -30) {
-            f.x = width + 30;
-            f.y = 60 + Math.random() * (height - 150);
-          }
-        }
-
-        for (const gate of gates) {
-          gate.x -= speed * dt;
-
-          if (!gate.passed && gate.x + gate.w < fish.x) {
-            gate.passed = true;
-            score += 1;
-            scoreEl.textContent = score;
-          }
-
-          const topH = gate.cy - gate.gap / 2;
-          const bottomY = gate.cy + gate.gap / 2;
-
-          if (
-            circleRect(fish.x, fish.y, fish.r - 4, gate.x, 0, gate.w, topH) ||
-            circleRect(fish.x, fish.y, fish.r - 4, gate.x, bottomY, gate.w, height - bottomY)
-          ) {
-            endGame();
-            return;
-          }
-        }
-
-        gates = gates.filter(g => g.x > -100);
-
-        for (const bubble of bubbles) {
-          bubble.x -= speed * dt;
-          bubble.phase += dt * 4;
-
-          if (
-            (fish.x - bubble.x) ** 2 + (fish.y - bubble.y) ** 2 <
-            (fish.r + bubble.r) ** 2
-          ) {
-            bubble.hit = true;
-            score += 3;
-            scoreEl.textContent = score;
-
-            for (let i = 0; i < 12; i++) {
-              particles.push({
-                x: bubble.x,
-                y: bubble.y,
-                r: 2 + Math.random() * 4,
-                a: 1,
-                vx: (Math.random() - .5) * 120,
-                vy: (Math.random() - .5) * 120
-              });
-            }
-          }
-        }
-
-        bubbles = bubbles.filter(b => b.x > -35 && !b.hit);
-
-        for (const p of particles) {
-          p.x += p.vx * dt;
-          p.y += p.vy * dt;
-          p.a -= dt * 1.5;
-          p.r += dt * 1.6;
-        }
-
-        particles = particles.filter(p => p.a > 0);
-
-        if (fish.y < fish.r || fish.y > height - fish.r - 8) {
-          endGame();
+    if (phase === 'reef') {
+      gateTimer -= dt;
+      if (gateTimer <= 0) {spawnGate();gateTimer=1.85;}
+      for (const gate of gates) {
+        gate.x -= speed()*dt;
+        const topH = gate.cy-gate.gap/2, bottomY=gate.cy+gate.gap/2;
+        if (circleRect(fish.x,fish.y,fish.r,gate.x,0,gate.w,topH) || circleRect(fish.x,fish.y,fish.r,gate.x,bottomY,gate.w,H-bottomY)) {end('coral');return;}
+        if (!gate.passed && gate.x+gate.w < fish.x-fish.r) {
+          gate.passed=true;gatesPassed++;addScore(1,fish.x+5,fish.y-35);
+          tone(680,.12,'sine',.032,820);
+          if (!bossCleared && gatesPassed === BOSS_GATE) {beginWarning();break;}
         }
       }
-
-      function drawBackground() {
-        const g = ctx.createLinearGradient(0, 0, 0, height);
-        g.addColorStop(0, "#7fe2ef");
-        g.addColorStop(.36, "#1595b3");
-        g.addColorStop(1, "#07556d");
-        ctx.fillStyle = g;
-        ctx.fillRect(0, 0, width, height);
-
-        ctx.globalAlpha = .16;
-        ctx.fillStyle = "#fff";
-        for (let i = 0; i < 10; i++) {
-          const x = (i * 137 + time * 12) % width;
-          const y = 25 + (i * 83) % Math.max(100, height - 150);
-          ctx.beginPath();
-          ctx.arc(x, y, 2 + (i % 4), 0, Math.PI * 2);
-          ctx.fill();
-        }
-        ctx.globalAlpha = 1;
-
-        // distant seabed
-        ctx.fillStyle = "#0a6070";
-        ctx.beginPath();
-        ctx.moveTo(0, height);
-        for (let x = 0; x <= width; x += 42) {
-          ctx.lineTo(x, height - 25 - Math.sin(x * .035 + time) * 8);
-        }
-        ctx.lineTo(width, height);
-        ctx.closePath();
-        ctx.fill();
-
-        // sea plants
-        ctx.strokeStyle = "rgba(22,118,100,.65)";
-        ctx.lineWidth = 5;
-        for (let x = 24; x < width; x += 95) {
-          ctx.beginPath();
-          ctx.moveTo(x, height - 8);
-          ctx.quadraticCurveTo(
-            x + Math.sin(time + x) * 11,
-            height - 48,
-            x + Math.sin(time * .8 + x) * 8,
-            height - 82
-          );
-          ctx.stroke();
-        }
-
-        // background fish silhouettes
-        ctx.globalAlpha = .16;
-        ctx.fillStyle = "#dffaff";
-        for (const f of tinyFish) {
-          const yy = f.y + Math.sin(time * 2 + f.phase) * 5;
-          ctx.beginPath();
-          ctx.ellipse(f.x, yy, 11 * f.s, 6 * f.s, 0, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.beginPath();
-          ctx.moveTo(f.x + 8 * f.s, yy);
-          ctx.lineTo(f.x + 18 * f.s, yy - 7 * f.s);
-          ctx.lineTo(f.x + 18 * f.s, yy + 7 * f.s);
-          ctx.closePath();
-          ctx.fill();
-        }
-        ctx.globalAlpha = 1;
-      }
-
-      function drawCoral(x, y, w, h, top) {
-        if (h <= 0) return;
-
-        ctx.fillStyle = "#b54d5c";
-        ctx.fillRect(x + 8, y, w - 16, h);
-
-        ctx.fillStyle = "#d46670";
-        const tip = top ? y + h : y;
-
-        for (let i = 0; i < 3; i++) {
-          const bx = x + 12 + i * 18;
-          ctx.beginPath();
-          ctx.moveTo(bx, tip);
-          ctx.lineTo(bx + 8, top ? tip - 28 : tip + 28);
-          ctx.lineTo(bx + 16, tip);
-          ctx.closePath();
-          ctx.fill();
-        }
-
-        ctx.fillStyle = "rgba(255,255,255,.12)";
-        ctx.fillRect(x + 16, y, 7, h);
-      }
-
-      function drawBubbles() {
-        for (const b of bubbles) {
-          const yy = b.y + Math.sin(b.phase) * 4;
-
-          ctx.strokeStyle = "rgba(235,252,255,.9)";
-          ctx.lineWidth = 2;
-          ctx.beginPath();
-          ctx.arc(b.x, yy, b.r, 0, Math.PI * 2);
-          ctx.stroke();
-
-          ctx.fillStyle = "rgba(255,255,255,.35)";
-          ctx.beginPath();
-          ctx.arc(b.x - 3, yy - 3, 2.7, 0, Math.PI * 2);
-          ctx.fill();
+      gates=gates.filter(g=>g.x+g.w>-25);
+      for (const b of bubbles) {
+        b.x-=speed()*dt; const by=b.y+Math.sin(artTime*2+b.phase)*5;
+        if (Math.hypot(fish.x-b.x,fish.y-by)<fish.r+b.r) {
+          b.hit=true;bubbleCount++;addScore(3,b.x,by-10);burst(b.x,by,'#d8ffe2',14);
+          tone(870,.14,'sine',.05,1100);tone(1300,.15,'sine',.03,1600,.07);
         }
       }
-
-      function drawParticles() {
-        for (const p of particles) {
-          ctx.globalAlpha = Math.max(0, p.a);
-          ctx.fillStyle = "#e8fbff";
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fill();
+      bubbles=bubbles.filter(b=>!b.hit&&b.x>-30);
+    } else if (phase === 'warning') {
+      if (phaseTime >= 2.8) beginBoss();
+    } else if (phase === 'boss') {
+      for (const a of attacks) {
+        if (phaseTime>=a.at && a.y===null) {
+          a.y=clamp(fish.y,80,H-75);
+          a.safeY=clamp(a.y+(a.y>H*.5?-140:140),90,H-75);
+          tone(180,.2,'triangle',.035,240);
+          announce('Crimson surge warning. Move ' + (a.safeY<a.y?'up.':'down.'));
         }
-        ctx.globalAlpha = 1;
-      }
-
-      function drawFish() {
-        ctx.save();
-        ctx.translate(fish.x, fish.y);
-        ctx.rotate(fish.rotation);
-
-        // tail
-        ctx.fillStyle = "#df7c37";
-        ctx.beginPath();
-        ctx.moveTo(-20, 0);
-        ctx.lineTo(-41, -18);
-        ctx.lineTo(-36, 1);
-        ctx.lineTo(-41, 19);
-        ctx.closePath();
-        ctx.fill();
-
-        // body
-        ctx.fillStyle = "#f4a340";
-        ctx.beginPath();
-        ctx.ellipse(0, 0, 26, 19, 0, 0, Math.PI * 2);
-        ctx.fill();
-
-        // scales
-        ctx.strokeStyle = "rgba(177,87,33,.34)";
-        ctx.lineWidth = 1.3;
-        for (let x = -13; x < 10; x += 9) {
-          ctx.beginPath();
-          ctx.arc(x, 1, 7, -.9, .9);
-          ctx.stroke();
+        if (a.y!==null && phaseTime>=a.at+1.25 && !a.fired) {
+          a.fired=true; const origin=bossOriginX(),travel=Math.max(100,(origin-fish.x)/1.1);
+          for(let i=0;i<3;i++) shots.push({x:origin+i*travel*.11,y:a.y+Math.sin(i*2)*14,r:15,vx:-travel,trail:[]});
+          burst(origin,a.y,'#ffa18e',12);tone(120,.25,'sawtooth',.025,60);
         }
-
-        // fins
-        ctx.fillStyle = "#f6c453";
-        ctx.beginPath();
-        ctx.moveTo(-3, -15);
-        ctx.lineTo(8, -31);
-        ctx.lineTo(14, -13);
-        ctx.closePath();
-        ctx.fill();
-
-        ctx.beginPath();
-        ctx.moveTo(-2, 15);
-        ctx.lineTo(9, 29);
-        ctx.lineTo(15, 12);
-        ctx.closePath();
-        ctx.fill();
-
-        // eye
-        ctx.fillStyle = "#fff";
-        ctx.beginPath();
-        ctx.arc(13, -5, 6.2, 0, Math.PI * 2);
-        ctx.fill();
-
-        ctx.fillStyle = "#222";
-        ctx.beginPath();
-        ctx.arc(15, -5, 2.6, 0, Math.PI * 2);
-        ctx.fill();
-
-        // mouth
-        ctx.strokeStyle = "#914c33";
-        ctx.lineWidth = 2.2;
-        ctx.beginPath();
-        ctx.arc(22, 5, 5.2, .15, 2.75);
-        ctx.stroke();
-
-        // barbels
-        ctx.strokeStyle = "#f6c453";
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.moveTo(21, 8);
-        ctx.quadraticCurveTo(31, 12, 34, 19);
-        ctx.stroke();
-
-        ctx.restore();
       }
-
-      function draw() {
-        ctx.clearRect(0, 0, width, height);
-        drawBackground();
-
-        for (const gate of gates) {
-          drawCoral(gate.x, 0, gate.w, gate.cy - gate.gap / 2, true);
-          drawCoral(
-            gate.x,
-            gate.cy + gate.gap / 2,
-            gate.w,
-            height - (gate.cy + gate.gap / 2),
-            false
-          );
-        }
-
-        drawBubbles();
-        drawParticles();
-
-        if (fish.x !== undefined) drawFish();
+      for (const s of shots) {
+        s.x+=s.vx*dt;
+        if (Math.hypot(fish.x-s.x,fish.y-s.y)<fish.r+s.r-3) {end('current');return;}
       }
+      shots=shots.filter(s=>s.x>-55);
+      if (phaseTime>=BOSS_DURATION) {bossWin();return;}
+    } else if (phase === 'victory') {
+      if (phaseTime>=2.7) {phase='reef';phaseTime=0;gateTimer=.9;gates=[];bubbles=[];syncUI();}
+    }
+    updateEffects(dt); syncUI();
+  }
+  function updateEffects(dt) {
+    for(const p of particles){p.x+=p.vx*dt;p.y+=p.vy*dt;p.life-=dt;p.vx*=1-dt*.5;}
+    particles=particles.filter(p=>p.life>0);
+    for(const f of floaters){f.y-=24*dt;f.t+=dt;}
+    floaters=floaters.filter(f=>f.t<1);
+    if(toastUntil&&runTime>toastUntil){$('toast').hidden=true;toastUntil=0;}
+  }
+  function syncUI() {
+    const active=state==='playing'||state==='paused';
+    const uiKey=[state,phase,gatesPassed,Math.ceil(BOSS_DURATION-phaseTime),Math.floor(phaseTime*8),Math.floor(runTime)].join('|');
+    if(uiKey===previousUI)return;previousUI=uiKey;
+    $('objective').hidden=!active||practice;
+    $('playTip').hidden=state!=='playing'||runTime>4||phase!=='reef';
+    $('bossHud').hidden=!active||phase!=='boss';
+    $('eventBanner').hidden=!active||!['warning','victory'].includes(phase);
+    if(!active)return;
+    $('objectiveText').textContent=bossCleared?'BEYOND THE REEF':phase==='reef'?'THE SHALLOWS':'UNCHARTED WATER';
+    $('objectiveSub').textContent=bossCleared?'CBK survived · keep exploring':phase==='reef'?`${Math.max(0,4-gatesPassed)} ${gatesPassed===3?'gate':'gates'} to uncharted water`:'Keep clear of the crimson surges';
+    $('routeDots').querySelectorAll('i').forEach((dot,i)=>dot.classList.toggle('filled',gatesPassed>i));
+    if(phase==='boss'){
+      $('bossClock').textContent=`${Math.max(0,Math.ceil(BOSS_DURATION-phaseTime))}s`;
+      const progress=clamp(phaseTime/BOSS_DURATION*100,0,100);
+      $('bossFill').style.width=progress+'%';$('bossMeter').setAttribute('aria-valuenow',String(Math.round(progress)));
+      const warning=attacks.find(a=>a.y!==null&&!a.fired);
+      $('bossHint').textContent=warning?(warning.safeY<warning.y?'↑ Swim above the marked current.':'↓ Sink below the marked current.'):'Keep swimming. Watch for the next warning.';
+    }
+    if(phase==='warning'||phase==='victory'){
+      const win=phase==='victory';$('eventBanner').classList.toggle('victory',win);
+      $('eventEyebrow').textContent=win?'THE LITTLE FISH DID IT':'SOMETHING STIRS BELOW';
+      $('eventTitle').textContent=win?'Big trouble. Outlasted.':'The water runs red.';
+      $('eventText').textContent=win?'+25 points · CBK retreats. Your reef run continues.':'CBK is approaching. Dodge the marked red current.';
+    }
+  }
 
-      function loop(now) {
-        if (!running) {
-          draw();
-          return;
-        }
+  function onInput() {
+    if(state==='home')start(false);
+    else if(state==='playing')swim();
+    else if(state==='paused')togglePause();
+    else if(state==='dead'&&performance.now()-deathAt>450)start($('retryBtn').dataset.practiceWin==='true'?false:practice);
+  }
+  stage.addEventListener('pointerdown',e=>{
+    if(e.button&&e.button!==0)return;
+    if(e.target.closest('button,a'))return;
+    if(state==='paused'||state==='dead')return;
+    e.preventDefault();onInput();
+  });
+  document.addEventListener('keydown',e=>{
+    if(e.altKey||e.ctrlKey||e.metaKey)return;
+    if(e.code==='Tab'&&(state==='paused'||state==='dead')){
+      const modal=state==='paused'?$('pauseScreen'):$('endScreen');
+      const buttons=[...modal.querySelectorAll('button')];const first=buttons[0],last=buttons[buttons.length-1];
+      if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+      else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+      return;
+    }
+    if(e.code==='KeyM'){if(!e.repeat)toggleSound();return;}
+    if(e.code==='KeyP'||e.code==='Escape'){e.preventDefault();if(!e.repeat)togglePause();return;}
+    if(e.code==='Space'||e.code==='ArrowUp'){
+      if(e.code==='Space'&&e.target.closest?.('button,a'))return;
+      e.preventDefault();if(!e.repeat)onInput();
+    }
+  });
+  $('startBtn').addEventListener('click',()=>start(false));
+  $('practiceBtn').addEventListener('click',()=>start(true));
+  $('retryBtn').addEventListener('click',()=>start($('retryBtn').dataset.practiceWin==='true'?false:practice));
+  $('resumeBtn').addEventListener('click',()=>togglePause());
+  $('pauseBtn').addEventListener('click',()=>togglePause());
+  $('pauseHomeBtn').addEventListener('click',home);$('endHomeBtn').addEventListener('click',home);
+  $('homeLink').addEventListener('click',e=>{e.preventDefault();home();});
+  $('soundBtn').addEventListener('click',toggleSound);
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)togglePause(true);});
+  window.addEventListener('blur',()=>{if(state==='playing')togglePause(true);});
+  new ResizeObserver(resize).observe(stage);
 
-        const dt = Math.min(.025, (now - last) / 1000);
-        last = now;
-
-        if (!paused) update(dt);
-        draw();
-
-        if (running) raf = requestAnimationFrame(loop);
+    const artClock = () => reducedMotion ? 1 : artTime;
+  const hash = n => { const v = Math.sin(n * 127.1 + 311.7) * 43758.5453; return v - Math.floor(v); };
+  function ellipse(x,y,rx,ry,fill,stroke=null,lw=1) {
+    ctx.beginPath();ctx.ellipse(x,y,Math.max(.01,rx),Math.max(.01,ry),0,0,TAU);
+    if(fill){ctx.fillStyle=fill;ctx.fill();}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=lw;ctx.stroke();}
+  }
+  function path(d,fill,stroke=null,lw=1) {
+    const p=new Path2D(d);if(fill){ctx.fillStyle=fill;ctx.fill(p);}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=lw;ctx.stroke(p);}
+  }
+  function line(points,color,width=1) {
+    ctx.beginPath();ctx.moveTo(...points[0]);for(const p of points.slice(1))ctx.lineTo(...p);
+    ctx.lineWidth=width;ctx.strokeStyle=color;ctx.stroke();
+  }
+  function waterBackground() {
+    const t=artClock(), drift=state==='home'?t*5:artTime*13;
+    const g=ctx.createLinearGradient(0,0,W*.2,H);
+    g.addColorStop(0,'#276e6c');g.addColorStop(.35,'#13515b');g.addColorStop(.72,'#0b384c');g.addColorStop(1,'#092b3e');
+    ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+    const light=ctx.createRadialGradient(W*.58,-90,10,W*.63,120,W*.7);
+    light.addColorStop(0,'rgba(150,210,158,.30)');light.addColorStop(.45,'rgba(79,161,148,.11)');light.addColorStop(1,'rgba(42,110,116,0)');
+    ctx.fillStyle=light;ctx.fillRect(0,0,W,H);
+    for(let i=0;i<6;i++){
+      const x=W*(.14+i*.18)+Math.sin(t*.13+i)*14;
+      const ray=ctx.createLinearGradient(x,0,x-150,H*.95);
+      ray.addColorStop(0,'rgba(187,225,176,.11)');ray.addColorStop(1,'rgba(128,222,203,0)');
+      ctx.fillStyle=ray;ctx.beginPath();ctx.moveTo(x,-20);ctx.lineTo(x+24+i*8,-20);ctx.lineTo(x-170+i*25,H);ctx.lineTo(x-300+i*30,H);ctx.closePath();ctx.fill();
+    }
+    ctx.save();ctx.globalAlpha=.12;ctx.strokeStyle='#afdfc5';ctx.lineWidth=1;
+    for(let j=0;j<5;j++){
+      ctx.beginPath();for(let x=-50;x<W+50;x+=12){const y=19+j*13+Math.sin(x*.021+t*.4+j*2)*5; x===-50?ctx.moveTo(x,y):ctx.lineTo(x,y);}
+      ctx.stroke();
+    }
+    ctx.restore();
+    // Soft ridgelines and submerged stone arches occupy a distant depth plane.
+    for(let layer=0;layer<3;layer++){
+      ctx.beginPath();ctx.moveTo(0,H);
+      for(let x=0;x<W+30;x+=25){const q=x+drift*(.2+layer*.15);ctx.lineTo(x,H-90-layer*15-Math.sin(q*.006+layer*3)*33-Math.sin(q*.015)*15);}
+      ctx.lineTo(W,H);ctx.closePath();ctx.fillStyle=['#124651','#103f4a','#0b3642'][layer];ctx.fill();
+    }
+    for(let i=0;i<4;i++){
+      const span=500;let x=((i*span-drift*.35)%(span*4)+span*4)%(span*4)-140;
+      if(x>W+180)continue;drawArch(x,H-36,.7+(i%3)*.16);
+    }
+    ctx.save();ctx.globalAlpha=.44;
+    for(let i=0;i<Math.ceil(W/45)+4;i++){
+      const x=((i*62-drift*.6)%(W+180)+(W+180))%(W+180)-90;
+      drawKelp(x,H-20,52+hash(i+18)*100,'#21615b',i,t);
+    }
+    ctx.restore();
+    // Small fish turn the background into a living place without competing with hazards.
+    ctx.save();ctx.globalAlpha=.23;
+    for(let i=0;i<17;i++){
+      const x=(hash(i+31)*W-t*(9+hash(i)*15)+W*5)%(W+80)-40;
+      const y=95+hash(i+53)*335+Math.sin(t*.8+i)*7;
+      ctx.save();ctx.translate(x,y);ctx.scale(.45+hash(i+72)*.7,.45+hash(i+72)*.7);
+      path('M-9 0Q0-8 10 0Q0 8-9 0M7 0L16-6L15 6Z','#95c6bd');ctx.restore();
+    }
+    ctx.restore();
+    for(let i=0;i<40;i++){
+      const x=hash(i+3)*W+Math.sin(t*.3+i)*8;
+      const y=((hash(i+9)*H-t*(4+hash(i)*8))%H+H)%H;
+      ctx.globalAlpha=.15+hash(i+60)*.19;ellipse(x,y,1+hash(i+9)*2.2,1+hash(i+9)*2.2,null,'#b6dbc9',.65);
+    }
+    ctx.globalAlpha=1;
+    if(bossTint>.002){ctx.fillStyle=`rgba(45,8,36,${bossTint*.49})`;ctx.fillRect(0,0,W,H);const r=ctx.createRadialGradient(W*.92,H*.43,10,W*.9,H*.5,W*.65);r.addColorStop(0,`rgba(193,48,60,${bossTint*.2})`);r.addColorStop(1,'rgba(110,20,51,0)');ctx.fillStyle=r;ctx.fillRect(0,0,W,H);}
+  }
+  function drawArch(x,y,s) {
+    ctx.save();ctx.translate(x,y);ctx.scale(s,s);
+    path('M-91 20L-84-139Q-83-199-33-243L5-249L49-221Q82-198 89-138L103 20ZM-43 20L-39-127Q-34-169-1-177Q35-173 39-126L42 20Z','#12454d');
+    path('M-78-142Q-74-210-30-238L3-244L-12-232Q-61-187-63-141L-66-17L-80-10Z','#1e5558');
+    line([[-74,-156],[-51,-145]],'#0d3945',3);line([[19,-234],[5,-208]],'#0d3945',3);line([[67,-175],[45,-163]],'#0d3945',3);
+    ctx.restore();
+  }
+  function drawKelp(x,y,h,color,seed,t) {
+    ctx.save();ctx.translate(x,y);ctx.strokeStyle=color;ctx.lineWidth=2.2;ctx.lineCap='round';
+    const sway=Math.sin(t*.65+seed)*9;
+    ctx.beginPath();ctx.moveTo(0,0);ctx.bezierCurveTo(-8,-h*.4,sway+6,-h*.7,sway,-h);ctx.stroke();
+    for(let j=1;j<6;j++){
+      const yy=-h*j/6,xx=Math.sin(j*.5)*sway;
+      ctx.beginPath();ctx.moveTo(xx,yy);ctx.quadraticCurveTo(xx-23,yy-3,xx-13,yy-22);ctx.quadraticCurveTo(xx+1,yy-16,xx,yy);ctx.fillStyle=color;ctx.fill();
+      ctx.beginPath();ctx.moveTo(xx,yy+8);ctx.quadraticCurveTo(xx+22,yy+2,xx+16,yy-15);ctx.quadraticCurveTo(xx+3,yy-7,xx,yy+8);ctx.fill();
+    }
+    ctx.restore();
+  }
+  function branchingCoral(x,y,s,color,seed=0,flip=false) {
+    ctx.save();ctx.translate(x,y);ctx.scale(s,flip?-s:s);ctx.strokeStyle=color;ctx.lineCap='round';ctx.lineJoin='round';
+    for(let i=0;i<5;i++){
+      const xx=(i-2)*13,hh=32+hash(seed+i)*43;
+      ctx.lineWidth=6;ctx.beginPath();ctx.moveTo(0,4);ctx.quadraticCurveTo(xx*.7,-18,xx,-hh);ctx.stroke();
+      ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(xx*.7,-hh*.56);ctx.lineTo(xx+(i%2?13:-13),-hh*.68);ctx.lineTo(xx+(i%2?16:-16),-hh*.86);ctx.stroke();
+      ellipse(xx,-hh,3.3,3.3,color);
+    }
+    ctx.restore();
+  }
+  function drawSeabed() {
+    const t=artClock(), drift=state==='home'?t*3:artTime*20;
+    ctx.beginPath();ctx.moveTo(0,H);for(let x=0;x<=W+20;x+=15)ctx.lineTo(x,H-9-Math.sin((x+drift)*.013)*4);ctx.lineTo(W,H);ctx.fillStyle='#072b36';ctx.fill();
+    for(let i=0;i<Math.ceil(W/130)+3;i++){
+      const x=((i*148-drift)%(W+300)+(W+300))%(W+300)-80;
+      const s=.34+hash(i+97)*.35;
+      branchingCoral(x,H+9,s,i%3===0?'#815257':i%3===1?'#2e6961':'#24595e',i*7);
+      ellipse(x+30,H-4,24,11,'#174749');ellipse(x+34,H-7,13,5,'#235653');
+      if(i%2===0)drawKelp(x+59,H+5,30+hash(i)*32,'#397563',i,t);
+    }
+    // A few shell-like highlights make the foreground readable as seabed, not a lethal bar.
+    for(let i=0;i<14;i++)ellipse(hash(i+420)*W,H-6,2+hash(i)*3,1,'#7b929078');
+  }
+  function drawCoralGate(gate,top) {
+    const h=top?gate.cy-gate.gap/2:H-(gate.cy+gate.gap/2);
+    if(h<=0)return;
+    const x=gate.x,w=gate.w;
+    ctx.save();ctx.translate(x,top?h:H-h);if(top)ctx.scale(1,-1);
+    // Everything solid stays within the rectangular collision envelope.
+    const g=ctx.createLinearGradient(0,0,w,0);g.addColorStop(0,'#a35061');g.addColorStop(.3,'#d5787c');g.addColorStop(.58,'#c76a75');g.addColorStop(1,'#834457');
+    ctx.beginPath();ctx.moveTo(0,h+2);ctx.lineTo(0,23);ctx.quadraticCurveTo(0,8,8,7);ctx.lineTo(w*.22,13);ctx.lineTo(w*.28,5);ctx.quadraticCurveTo(w*.36,-1,w*.43,4);ctx.lineTo(w*.54,15);ctx.lineTo(w*.65,6);ctx.quadraticCurveTo(w*.75,-1,w*.83,6);ctx.lineTo(w*.89,18);ctx.quadraticCurveTo(w,9,w,30);ctx.lineTo(w,h+2);ctx.closePath();ctx.fillStyle=g;ctx.fill();
+    ctx.save();ctx.clip();
+    ctx.globalAlpha=.34;ctx.strokeStyle='#722f4c';ctx.lineWidth=4;ctx.lineCap='round';
+    for(let j=0;j<4;j++){ctx.beginPath();ctx.moveTo(10+j*15,h+5);ctx.bezierCurveTo(4+j*16,h*.7,24+j*12,h*.45,9+j*16,14);ctx.stroke();}
+    ctx.globalAlpha=.37;
+    for(let j=0;j<Math.ceil(h/20);j++)for(let k=0;k<3;k++){const xx=8+k*(w-16)/3+hash(j*7+k+gate.seed)*8,yy=22+j*21;ellipse(xx,yy,2,2.4,'#e8a391');}
+    ctx.globalAlpha=.22;ctx.fillStyle='#ffc6a4';ctx.fillRect(6,10,4,h);ctx.restore();
+    ctx.strokeStyle='#ffd0ae88';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(4,20);ctx.quadraticCurveTo(3,9,9,9);ctx.moveTo(w*.3,9);ctx.quadraticCurveTo(w*.35,2,w*.42,7);ctx.moveTo(w*.68,9);ctx.quadraticCurveTo(w*.76,2,w*.8,8);ctx.stroke();
+    ctx.restore();
+  }
+  function drawKarp(x,y,s,rotation,t,hero=false) {
+    ctx.save();ctx.translate(x,y);ctx.rotate(rotation);ctx.scale(s,s);ctx.lineJoin='round';ctx.lineCap='round';
+    const beat=Math.sin(t*(hero?5:12))*(hero?3:5)+(hero?0:fish.kick*5);
+    // Flowing ivory tail with warm membranes; the hinge moves independently of the body.
+    ctx.save();ctx.translate(-35,0);ctx.rotate(beat*.022);
+    path('M4-7Q-19-17-41-35Q-36-13-46 0Q-34 10-40 33Q-11 13 5 8Z','#e3eacb','#653f3b',1.8);
+    path('M0-5Q-19-12-35-25Q-28-10-34 0Q-27 12-33 24Q-13 8 2 5Z','#ecb16e');
+    line([[0,0],[-31,-19]],'#b27852',1);line([[0,0],[-35,0]],'#b27852',1);line([[0,0],[-29,19]],'#b27852',1);
+    ctx.restore();
+    // Crown-like dorsal fin and matching lower fin keep the homage recognisable.
+    path('M-22-22L-22-39L-11-33L-4-54L8-39L21-47L24-21Z','#efcb72','#795043',1.8);
+    path('M-13-25L-4-46L1-28M4-26L18-41L17-25',null,'#bf995a',1.3);
+    path('M-11 20L-4 43L8 32L19 39L22 19Z','#efd596','#795043',1.7);
+    path('M-1 24L0 34M10 25L16 34',null,'#c5a065',1);
+    const body=ctx.createLinearGradient(-8,-32,12,32);body.addColorStop(0,'#ffbd7b');body.addColorStop(.31,'#fa915d');body.addColorStop(.7,'#e76847');body.addColorStop(1,'#bf483c');
+    ellipse(0,0,43,29,body,'#693e3b',2);
+    ctx.save();ctx.beginPath();ctx.ellipse(0,0,42,28,0,0,TAU);ctx.clip();
+    ellipse(4,30,47,23,'#ffbb84');
+    ctx.globalAlpha=.3;ctx.strokeStyle='#a84737';ctx.lineWidth=1.4;
+    for(let row=0;row<4;row++)for(let col=0;col<4;col++){
+      const xx=-35+col*14+(row%2)*6,yy=-17+row*12;
+      ctx.beginPath();ctx.arc(xx,yy,7,-1.05,1.05);ctx.stroke();
+    }
+    ctx.globalAlpha=.26;path('M-29-15Q-8-34 16-18',null,'#fff1c8',4);ctx.restore();
+    // A soft gill shadow separates the head from the scaled body.
+    path('M15-20Q6-8 13 11Q17 21 24 22',null,'#b65342',2);
+    path('M10 5Q-3 12-12 27Q7 27 19 13Z','#f7e4b5','#9d654c',1.1);
+    path('M11 10L-5 23M14 12L2 23',null,'#c7aa75',.9);
+    const blink=hero&&t%7>6.83?.18:1;
+    ellipse(28,-7,12,13*blink,'#fff4df','#8b5140',1.5);
+    if(blink>.5){ellipse(32,-7,4.5,7,'#283a3d');ellipse(33,-10,1.6,2,'#ffffff');}
+    ellipse(44,10,8,11,'#f4cc8b','#9b6249',1.7);ellipse(45,10,4.1,6.3,'#62433d');
+    path('M39 17Q58 26 66 13M39 19Q57 38 51 47',null,'#704a3d',3.5);
+    path('M39 17Q58 26 66 13M39 19Q57 38 51 47',null,'#f0d592',2.1);
+    ellipse(36,7,2,1.2,'#dc825a');
+    ctx.restore();
+  }
+  function bossScale() {return clamp(W/840,.68,1.42);}
+  function bossOriginX() {return W*.87-54*bossScale();}
+  function drawCBK(x,y,s,t,alpha=1) {
+    ctx.save();ctx.translate(x,y);ctx.scale(s,s);ctx.globalAlpha=alpha;ctx.lineJoin='round';ctx.lineCap='round';
+    // A chain of overlapping armoured segments produces a continuous swimming coil.
+    const segments=[];
+    for(let i=0;i<18;i++){
+      const u=i/17;
+      segments.push({x:36+u*130+Math.sin(u*TAU*.95+t*.6)*46,y:36+u*215,r:36*(1-u*.72)});
+    }
+    for(let i=segments.length-1;i>=0;i--){
+      const b=segments[i];
+      path(`M${b.x-6} ${b.y-b.r*.6}L${b.x+13} ${b.y-b.r-17}L${b.x+23} ${b.y-b.r*.12}Z`,'#dce3ce','#653547',1.5);
+      const g=ctx.createLinearGradient(b.x-b.r,b.y,b.x+b.r,b.y);g.addColorStop(0,'#f89382');g.addColorStop(.42,'#d65763');g.addColorStop(1,'#822e49');
+      ellipse(b.x,b.y,b.r,b.r*.86,g,'#6b2b43',1.7);
+      ellipse(b.x-b.r*.33,b.y+b.r*.24,b.r*.56,b.r*.6,'#e9bf97');
+      path(`M${b.x-b.r*.75} ${b.y+b.r*.08}Q${b.x-b.r*.2} ${b.y+b.r*.23} ${b.x+b.r*.16} ${b.y+b.r*.05}`,null,'#ba8b79',1.1);
+      ellipse(b.x+b.r*.29,b.y-b.r*.3,b.r*.25,b.r*.1,'#ed8c8370');
+    }
+    // Swept cheek fins and paired ivory horns create the red sea-dragon silhouette.
+    path('M10-8L52-38L48-12L69-10L46 10L56 31L18 27Z','#e2dac3','#723346',2.3);
+    path('M20-3L47-25M24 5L56-6M24 14L47 23',null,'#a08d8b',1.1);
+    path('M-13-20Q-7-66 22-81Q12-48 18-22Z','#f1ddbc','#723346',2.2);
+    path('M15-23Q34-54 45-49L30-19Z','#cbbdb2','#723346',1.7);
+    const head=ctx.createLinearGradient(-25,-45,22,42);head.addColorStop(0,'#fa9c85');head.addColorStop(.35,'#e56568');head.addColorStop(1,'#a53550');
+    path('M-46-15Q-26-42 1-35Q36-28 36 3L28 36Q11 51-20 37L-43 29L-60 13L-57-3Z',head,'#6b2d42',2.5);
+    path('M-22-33L-10-53L1-36L10-42L13-26Z','#edba90','#853d4a',1.5);
+    path('M-20-20L-43-12L-29 0L-12-7Z','#efe7cb','#843c47',1.2);
+    ellipse(-28,-10,3,6,'#533142');ellipse(-29,-12,1.1,1.7,'#ffffff');
+    path('M-43-16L-18-25',null,'#762c41',4);
+    // Open jaw, distinct fangs and curling barbels; expressive without gore.
+    path('M-56 4Q-35 11-19 4L-18 24Q-35 34-58 21Z','#49283c','#743246',1.7);
+    path('M-53 6L-47 17L-41 9M-27 8L-26 18L-21 6','#f7e9d0');
+    path('M-54 22L-46 16L-43 27M-28 27L-26 19L-21 25','#f7e9d0');
+    path('M-52 29Q-27 46-11 28L-4 33Q-23 53-49 38Z','#e8bd98','#7f3d4c',1.6);
+    path('M-49 27Q-78 35-80 6Q-79-7-90-13M-42 29Q-65 62-88 43',null,'#622a40',5);
+    path('M-49 27Q-78 35-80 6Q-79-7-90-13M-42 29Q-65 62-88 43',null,'#f2d3ac',2.8);
+    path('M0 2Q11 10 12 29',null,'#993849',2);ellipse(-52,-1,2,1.4,'#8f3a48');
+    ctx.restore();
+  }
+  function drawAttackTelegraphs() {
+    if(phase!=='boss')return;
+    for(const a of attacks){
+      if(a.y===null||phaseTime>a.at+1.6)continue;
+      const warm=clamp((phaseTime-a.at)/1.25,0,1),xEnd=bossOriginX()+12;
+      ctx.save();
+      const g=ctx.createLinearGradient(0,0,xEnd,0);g.addColorStop(0,`rgba(255,104,113,${.1+warm*.06})`);g.addColorStop(1,`rgba(255,104,113,${.25+warm*.05})`);
+      ctx.fillStyle=g;ctx.fillRect(0,a.y-39,xEnd,78);
+      ctx.strokeStyle=`rgba(255,173,158,${.4+warm*.45})`;ctx.lineWidth=1.2;ctx.setLineDash([7,7]);
+      ctx.beginPath();ctx.moveTo(0,a.y-39);ctx.lineTo(xEnd,a.y-39);ctx.moveTo(0,a.y+39);ctx.lineTo(xEnd,a.y+39);ctx.stroke();ctx.setLineDash([]);
+      // Chevrons and a clearly outlined safe pocket give a cue beyond colour alone.
+      for(let x=24;x<xEnd;x+=57){ctx.globalAlpha=.25+warm*.24;path(`M${x+8} ${a.y-8}L${x} ${a.y}L${x+8} ${a.y+8}`,null,'#ffd2b8',2);}
+      ctx.globalAlpha=.8;
+      const sx=fish.x, sy=a.safeY;
+      ellipse(sx,sy,29,34,'rgba(178,238,196,.04)', '#b8edca',1.3);
+      path(sy<a.y?`M${sx-6} ${sy+2}L${sx} ${sy-5}L${sx+6} ${sy+2}`:`M${sx-6} ${sy-2}L${sx} ${sy+5}L${sx+6} ${sy-2}`,null,'#d9f5d6',1.7);
+      ctx.font='600 8px "Segoe UI", sans-serif';ctx.textAlign='center';ctx.fillStyle='#d6f0cd';ctx.fillText(sy<a.y?'SWIM UP':'SINK DOWN',sx,sy+49);
+      ctx.restore();
+    }
+  }
+  function drawShots() {
+    for(const shot of shots){
+      const g=ctx.createLinearGradient(shot.x-14,shot.y,shot.x+76,shot.y);g.addColorStop(0,'rgba(255,146,132,.8)');g.addColorStop(1,'rgba(218,82,110,0)');
+      ctx.fillStyle=g;ctx.beginPath();ctx.moveTo(shot.x,shot.y-13);ctx.quadraticCurveTo(shot.x+55,shot.y-8,shot.x+85,shot.y);ctx.quadraticCurveTo(shot.x+52,shot.y+7,shot.x,shot.y+13);ctx.closePath();ctx.fill();
+      const orb=ctx.createRadialGradient(shot.x-4,shot.y-4,1,shot.x,shot.y,shot.r);orb.addColorStop(0,'#fff5d5');orb.addColorStop(.4,'#ffd4ae');orb.addColorStop(.72,'#f58e83');orb.addColorStop(1,'#b94463');
+      ellipse(shot.x,shot.y,shot.r,shot.r,orb,'#ffc7a2',1);ellipse(shot.x-3,shot.y-4,4,3,'#fff7dc');
+    }
+  }
+  function drawCollectibles() {
+    for(const b of bubbles){
+      const y=b.y+Math.sin(artTime*2+b.phase)*5;
+      const halo=ctx.createRadialGradient(b.x,y,1,b.x,y,24);halo.addColorStop(0,'rgba(211,248,164,.3)');halo.addColorStop(1,'rgba(211,248,164,0)');ctx.fillStyle=halo;ctx.fillRect(b.x-25,y-25,50,50);
+      ellipse(b.x,y,b.r,b.r,'rgba(219,254,202,.1)','#d4ecc3',1.3);
+      path(`M${b.x-7} ${y-2}Q${b.x-7} ${y-8} ${b.x-1} ${y-8}`,null,'#fbffe9',1.6);
+      path(`M${b.x} ${y-4}L${b.x+2} ${y}L${b.x+5} ${y+1}L${b.x+1} ${y+3}L${b.x-1} ${y+6}L${b.x-2} ${y+2}L${b.x-5} ${y}L${b.x-1} ${y-1}Z`,'#e1f2b4');
+    }
+  }
+  function drawEffects() {
+    for(const p of particles){
+      ctx.globalAlpha=clamp(p.life/.5,0,.8);
+      if(p.type==='bubble')ellipse(p.x,p.y,p.r,p.r,null,p.color,.8);else ellipse(p.x,p.y,p.r*.6,p.r*.6,p.color);
+    }
+    ctx.globalAlpha=1;
+    for(const f of floaters){ctx.globalAlpha=1-f.t;ctx.font='700 18px "Segoe UI", sans-serif';ctx.textAlign='center';ctx.fillStyle=f.color;ctx.fillText(f.text,f.x,f.y);}
+    ctx.globalAlpha=1;
+  }
+  function draw() {
+    if(!canvas.width||!W)return;
+    ctx.setTransform(dpr*scale,0,0,dpr*scale,0,0);
+    ctx.clearRect(0,0,W,H);ctx.lineCap='round';waterBackground();
+    const t=artClock();
+    if(state==='home'){
+      const hx=mobile?W*.50:W*.695,hy=mobile?H*.205:H*.45;
+      const hs=mobile?1.48:clamp(W/350,1.9,3.4);
+      if(!mobile)drawCBK(W*.93,H*.31,1.37,t,.15);
+      const halo=ctx.createRadialGradient(hx,hy,10,hx,hy,hs*100);halo.addColorStop(0,'rgba(120,213,167,.1)');halo.addColorStop(1,'rgba(120,213,167,0)');ctx.fillStyle=halo;ctx.fillRect(hx-hs*100,hy-hs*100,hs*200,hs*200);
+      drawKarp(hx,hy+Math.sin(t*1.3)*7,hs,Math.sin(t*.9)*.045,t,true);
+      for(let i=0;i<5;i++){const x=hx-hs*82-i*17,y=hy+Math.sin(t+i)*8-i*4;ellipse(x,y,3+i*.4,3+i*.4,null,'#b4d6c455',1);}
+    }else{
+      drawAttackTelegraphs();
+      if(bossVisibility>.015){
+        const active=attacks.find(a=>a.y!==null&&phaseTime>=a.at&&phaseTime<a.at+2.4);
+        const target=active?active.y:H*.44;
+        const by=phase==='warning'?H*.42:target;
+        const enter=(1-ease(bossVisibility))*W*.3;
+        drawCBK(W*.87+enter,by,bossScale(),t,clamp(bossVisibility,0,1));
       }
+      for(const gate of gates){drawCoralGate(gate,true);drawCoralGate(gate,false);}
+      drawCollectibles();drawShots();
+      drawKarp(fish.x,fish.y,.66,fish.rotation,t,false);
+      drawEffects();
+    }
+    drawSeabed();
+    // Boundary guides sit behind the interface and communicate the playable water.
+    if(state==='playing'){
+      ctx.strokeStyle='rgba(169,215,199,.16)';ctx.lineWidth=.7;
+      ctx.beginPath();ctx.moveTo(0,13);ctx.lineTo(W,13);ctx.moveTo(0,H-15);ctx.lineTo(W,H-15);ctx.stroke();
+    }
+  }
 
-      function togglePause() {
-        if (!running) return;
-        paused = !paused;
-        pauseBtn.textContent = paused ? "Resume" : "Pause";
-        if (!paused) last = performance.now();
-      }
 
-      startBtn.addEventListener("click", start);
-      pauseBtn.addEventListener("click", togglePause);
+  function frame(now) {
+    if(!lastFrame)lastFrame=now;
+    const dt=Math.min(.075,Math.max(0,(now-lastFrame)/1000));lastFrame=now;
+    if(state!=='paused'&&state!=='dead')artTime+=dt;
+    if(state==='playing'){
+      accumulator+=dt;
+      while(accumulator>=STEP){update(STEP);accumulator-=STEP;if(state!=='playing'){accumulator=0;break;}}
+    } else if(state==='home')accumulator=0;
+    const targetTint=state==='home'?0:phase==='warning'||phase==='boss'?1:0;
+    if(state!=='paused'&&state!=='dead'){
+      bossTint=mix(bossTint,targetTint,Math.min(1,dt*1.3));
+      bossVisibility=mix(bossVisibility,targetTint,Math.min(1,dt*1.8));
+    }
+    draw();requestAnimationFrame(frame);
+  }
 
-      game.addEventListener("pointerdown", (e) => {
-        if (e.target.closest("button")) return;
-        if (!running && dead) start();
-        else flap();
-      });
+  
+  setScreens();resize();requestAnimationFrame(frame);
+})();
 
-      game.addEventListener("keydown", (e) => {
-        if (e.code === "Space" || e.code === "ArrowUp") {
-          e.preventDefault();
-          if (!running) start();
-          else flap();
-        } else if (e.code === "KeyP") {
-          e.preventDefault();
-          togglePause();
-        }
-      });
-
-      window.addEventListener("resize", resize);
-
-      resize();
-      fish = { x: Math.min(150, width * .24), y: height * .5, vy: 0, r: 21, rotation: 0 };
-      tinyFish = [];
-      draw();
-    })();
-  </script>
+</script>
 </body>
 </html>
